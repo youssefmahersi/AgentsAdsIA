@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0E1014">
+<title>Studio Ads</title>
+<link rel="icon" href="/web/icones/icone-512.png">
+<link rel="apple-touch-icon" href="/web/icones/icone-512.png">
+<link rel="stylesheet" href="/web/style.css">
+</head>
+<body data-mode="simple">
+<header class="barre-haut">
+  <div class="marque"><img src="/web/icones/icone-512.png" alt=""><span>Studio&nbsp;Ads</span></div>
+  <nav class="onglets" id="onglets">
+    <button data-onglet="montage" class="actif">Montage</button>
+    <button data-onglet="generations">Générations <span class="pastille" id="nb-en-cours" hidden></span></button>
+    <button data-onglet="bibliotheque">Bibliothèque</button>
+    <button data-onglet="exporter">Exporter</button>
+    <button data-onglet="comparer">Comparer</button>
+    <button data-onglet="claude">Claude <span class="pastille" id="nb-reponses" hidden></span></button>
+    <button data-onglet="references">Références</button>
+  </nav>
+  <div class="actions-haut">
+    <label class="interrupteur" title="Le mode Avancé montre tous les réglages">
+      <input type="checkbox" id="mode-avance"><span>Avancé</span>
+    </label>
+    <button class="btn-fantome" id="btn-guide">Première fois ?</button>
+  </div>
+</header>
+
+<main>
+  <!-- ============================== MONTAGE -->
+  <section class="vue actif" id="vue-montage">
+    <div class="montage-haut">
+      <div class="projet-barre">
+        <select id="choix-projet" aria-label="Projet"></select>
+        <select id="choix-version" aria-label="Version"></select>
+        <button class="btn" id="btn-nouveau-projet" title="Créer un projet à partir de fichiers">+ Projet</button>
+        <span class="espace"></span>
+        <button class="btn-icone" id="btn-annuler" title="Annuler (Cmd+Z)">↶</button>
+        <button class="btn-icone" id="btn-refaire" title="Refaire (Cmd+Maj+Z)">↷</button>
+        <button class="btn" id="btn-enregistrer" title="Crée une nouvelle version, l'ancienne est gardée">Enregistrer</button>
+        <div class="menu-rendu">
+          <button class="btn btn-accent" id="btn-rendre">Rendre ▾</button>
+          <div class="menu" id="menu-rendre" hidden>
+            <button data-preset="apercu">Aperçu rapide (540p)</button>
+            <button data-preset="extrait">Extrait de 5 s depuis la tête de lecture</button>
+            <button data-preset="reels">Qualité finale 9:16</button>
+            <button data-preset="script" id="btn-script" hidden>Lancer le script de rendu complet</button>
+          </div>
+        </div>
+      </div>
+      <div class="lecteur" id="lecteur">
+        <div class="ecran" id="ecran">
+          <video id="video-a" playsinline preload="auto"></video>
+          <video id="video-b" playsinline preload="auto"></video>
+          <img id="image-plan" alt="" hidden>
+          <div id="calque-textes"></div>
+          <div id="zone-sure" hidden><div class="zs-haut"></div><div class="zs-bas"></div></div>
+          <div class="vide-projet" id="vide-projet" hidden>Aucun plan. Ajoute des fichiers depuis la Bibliothèque.</div>
+        </div>
+        <div class="commandes">
+          <span class="tc" id="tc">00:00.00</span>
+          <button class="btn-lecture" id="btn-lecture" title="Lecture / pause (Espace)">▶</button>
+          <span class="tc tc-total" id="tc-total">00:00.00</span>
+          <button class="btn-icone petit" id="btn-zone-sure" title="Montrer la zone sûre Reels">▣</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-zone">
+      <div class="timeline" id="timeline" tabindex="0" aria-label="Timeline">
+        <div class="tl-contenu" id="tl-contenu">
+          <div class="regle" id="regle"></div>
+          <div class="piste piste-reperes" id="piste-reperes" data-nom="Repères"></div>
+          <div class="piste piste-video" id="piste-video" data-nom="Vidéo"></div>
+          <div class="piste piste-son" id="piste-son" data-nom="Son"></div>
+          <div class="piste piste-texte" id="piste-texte" data-nom="Texte"></div>
+          <div class="piste piste-sons" id="piste-sons" data-nom="Sons"></div>
+          <div class="piste piste-musique" id="piste-musique" data-nom="Musique"></div>
+        </div>
+      </div>
+      <div class="tete" aria-hidden="true"></div>
+      <div class="zoom-info" id="zoom-info"></div>
+    </div>
+
+    <nav class="outils" id="outils">
+      <button data-outil="plan"><i>▦</i>Plan</button>
+      <button data-outil="couper"><i>✂</i>Couper</button>
+      <button data-outil="vitesse"><i>⏱</i>Vitesse</button>
+      <button data-outil="volume"><i>🔊</i>Volume</button>
+      <button data-outil="texte"><i>T</i>Texte</button>
+      <button data-outil="effets"><i>✦</i>Effets</button>
+      <button data-outil="filtres"><i>◐</i>Filtres</button>
+      <button data-outil="ajuster"><i>⚙</i>Ajuster</button>
+      <button data-outil="transitions"><i>⧉</i>Transitions</button>
+      <button data-outil="sons"><i>♪</i>Sons</button>
+      <button data-outil="marqueur"><i>⚑</i>Marqueur</button>
+      <button data-outil="remplacer"><i>⇄</i>Remplacer</button>
+      <button data-outil="supprimer"><i>🗑</i>Supprimer</button>
+      <button data-outil="exporter"><i>⇪</i>Exporter</button>
+    </nav>
+    <div class="panneau" id="panneau" hidden>
+      <div class="panneau-tete"><span class="poignee"></span><h3 id="panneau-titre"></h3><button class="btn-icone" id="panneau-fermer" aria-label="Fermer">✕</button></div>
+      <div class="panneau-corps" id="panneau-corps"></div>
+    </div>
+  </section>
+
+  <!-- ============================== GÉNÉRATIONS -->
+  <section class="vue" id="vue-generations">
+    <div class="entete-vue">
+      <div class="compteurs" id="gen-compteurs"></div>
+      <div class="filtres">
+        <select id="gen-periode"><option value="jour">Aujourd'hui</option><option value="7">7 derniers jours</option><option value="tout">Tout</option></select>
+        <select id="gen-projet"><option value="">Tous les projets</option></select>
+        <select id="gen-type"><option value="">Images et vidéos</option><option value="image">Images</option><option value="video">Vidéos</option></select>
+        <select id="gen-etat"><option value="">Tous les états</option><option>envoyé</option><option>en file</option><option>en cours</option><option>fini</option><option>échec</option></select>
+        <input type="search" id="gen-recherche" placeholder="Chercher dans les prompts">
+      </div>
+      <p class="note" id="gen-note"></p>
+    </div>
+    <div class="grille-gen" id="gen-liste"></div>
+  </section>
+
+  <!-- ============================== BIBLIOTHÈQUE -->
+  <section class="vue" id="vue-bibliotheque">
+    <nav class="sous-onglets" id="biblio-onglets">
+      <button data-sous="creas" class="actif">Créas de l'équipe</button>
+      <button data-sous="fiches">Fiches produit</button>
+      <button data-sous="transitions">Transitions</button>
+      <button data-sous="looks">Filtres et looks</button>
+      <button data-sous="effets">Effets et masques</button>
+      <button data-sous="motion">Titres et sous-titres</button>
+      <button data-sous="sons">Sons</button>
+      <button data-sous="catalogue">À venir</button>
+    </nav>
+    <div id="biblio-corps"></div>
+  </section>
+
+  <!-- ============================== EXPORTER -->
+  <section class="vue" id="vue-exporter">
+    <div class="deux-colonnes">
+      <div>
+        <h2>Exporter</h2>
+        <p class="note">Les réglages par défaut sont ceux qui marchent sur Meta et TikTok. Chaque fichier est vérifié avec ffprobe (dimensions, images/s, son 48 kHz, −14 LUFS).</p>
+        <label class="champ">Projet <select id="exp-projet"></select></label>
+        <div class="cartes-presets" id="exp-presets"></div>
+        <div class="avance-seul">
+          <h3>Réglages personnalisés</h3>
+          <label class="champ">Début de l'extrait (s) <input type="number" id="exp-extrait" value="0" min="0" step="0.1"></label>
+        </div>
+      </div>
+      <div>
+        <h3>Rendus en cours</h3>
+        <div id="exp-travaux" class="liste-travaux"></div>
+        <h3>Fichiers exportés</h3>
+        <div id="exp-fichiers" class="liste-fichiers"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== COMPARER -->
+  <section class="vue" id="vue-comparer">
+    <div class="comparer-barre">
+      <label class="champ">À gauche <select id="cmp-a"></select></label>
+      <label class="champ">À droite <select id="cmp-b"></select></label>
+      <label class="champ">Décalage <input type="range" id="cmp-decalage" min="-3" max="3" step="0.04" value="0"><span id="cmp-decalage-val">0,00 s</span></label>
+      <label class="champ">Son <select id="cmp-son"><option value="a">Gauche</option><option value="b">Droite</option><option value="aucun">Coupé</option></select></label>
+      <button class="btn btn-accent" id="cmp-lecture">▶ Lire les deux</button>
+    </div>
+    <div class="comparer-ecrans">
+      <figure><video id="cmp-video-a" playsinline></video><figcaption id="cmp-legende-a"></figcaption></figure>
+      <figure><video id="cmp-video-b" playsinline></video><figcaption id="cmp-legende-b"></figcaption></figure>
+    </div>
+    <input type="range" id="cmp-position" min="0" max="1000" value="0" class="cmp-position" aria-label="Position">
+  </section>
+
+  <!-- ============================== CLAUDE -->
+  <section class="vue" id="vue-claude">
+    <div class="claude-zone">
+      <div class="fil" id="fil-ordres"></div>
+      <form class="saisie" id="form-ordre">
+        <div class="contexte" id="ordre-contexte"></div>
+        <textarea id="ordre-texte" rows="2" placeholder="Écris ce que tu veux : « coupe ce plan », « refais ce passage ici », « mets le prix en plus gros »…"></textarea>
+        <div class="saisie-bas">
+          <label class="case"><input type="checkbox" id="ordre-tc" checked> Joindre le projet et le timecode</label>
+          <label class="case" title="Désactivé : aucun jeton n'est stocké dans le studio"><input type="checkbox" disabled> M'envoyer aussi sur ma messagerie</label>
+          <button class="btn btn-accent">Envoyer</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================== RÉFÉRENCES -->
+  <section class="vue" id="vue-references">
+    <div class="depot" id="depot">
+      <p><b>Glisse ici une vidéo ou un dossier entier</b> de vidéos à reproduire.</p>
+      <p class="note">Elles sont copiées dans <code>references/</code>, et un ordre « À REPRODUIRE » part dans la boîte de Claude.</p>
+      <div class="depot-boutons">
+        <label class="btn">Choisir des vidéos<input type="file" id="ref-fichiers" accept="video/*,image/*" multiple hidden></label>
+        <label class="btn">Choisir un dossier<input type="file" id="ref-dossier" webkitdirectory multiple hidden></label>
+      </div>
+      <input type="text" id="ref-note" placeholder="Note pour l'équipe (facultatif) : ex. « même rythme, avec notre poêle »">
+      <div id="ref-progression" class="note"></div>
+    </div>
+    <div id="ref-liste"></div>
+  </section>
+</main>
+
+<div class="modale" id="modale" hidden><div class="modale-boite"><button class="btn-icone modale-fermer" id="modale-fermer" aria-label="Fermer">✕</button><div id="modale-corps"></div></div></div>
+<div class="toast" id="toast" hidden></div>
+<div class="bulle" id="bulle" hidden></div>
+
+<script src="/web/app.js"></script>
+<script src="/web/montage.js"></script>
+<script src="/web/onglets.js"></script>
+</body>
+</html>

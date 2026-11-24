@@ -1,0 +1,86 @@
+{
+ "nom": "B0002 · remake Titanox (poêle titane)",
+ "format": {
+  "largeur": 1080,
+  "hauteur": 1920,
+  "ips": 30
+ },
+ "plans": [
+  {
+   "id": "p1",
+   "source": "produits/poele-titane/videos/_travail/B0002_remake_titanox/vid/P1_480_e2.mp4",
+   "type": "video",
+   "debut": 0,
+   "fin": 3.0,
+   "duree_source": 3.0,
+   "vitesse": 0.957,
+   "volume": 1,
+   "effets": [],
+   "look": null
+  },
+  {
+   "id": "p2",
+   "source": "produits/poele-titane/videos/_travail/B0002_remake_titanox/vid/P2_480_e1.mp4",
+   "type": "video",
+   "debut": 0,
+   "fin": 2.467,
+   "duree_source": 3.0,
+   "vitesse": 1,
+   "volume": 1,
+   "effets": [],
+   "look": null
+  },
+  {
+   "id": "p3",
+   "source": "produits/poele-titane/videos/_travail/B0002_remake_titanox/vid/P3_480_e2.mp4",
+   "type": "video",
+   "debut": 0,
+   "fin": 2.0,
+   "duree_source": 2.0,
+   "vitesse": 1.25,
+   "volume": 1,
+   "effets": [],
+   "look": null
+  },
+  {
+   "id": "p4",
+   "source": "produits/poele-titane/videos/_travail/B0002_remake_titanox/vid/P4_480_e2.mp4",
+   "type": "video",
+   "debut": 0,
+   "fin": 2.433,
+   "duree_source": 3.0,
+   "vitesse": 1,
+   "volume": 1,
+   "effets": [],
+   "look": null
+  },
+  {
+   "id": "p5",
+   "source": "produits/poele-titane/videos/_travail/B0002_remake_titanox/vid/P5_480_e1.mp4",
+   "type": "video",
+   "debut": 0.5,
+   "fin": 1.1,
+   "duree_source": 2.0,
+   "vitesse": 1,
+   "volume": 1,
+   "effets": [],
+   "look": null
+  }
+ ],
+ "transitions": [],
+ "textes": [],
+ "sons": [
+  {
+   "id": "s1",
+   "source": "produits/poele-titane/videos/_travail/B0002_remake_titanox/son/mix_-14.wav",
+   "type": "voix",
+   "debut": 0,
+   "volume": 1.0
+  }
+ ],
+ "source_montage": "produits/poele-titane/videos/_travail/B0002_remake_titanox/montage/graph.txt",
+ "id": "B0002-remake",
+ "version": "v001",
+ "enregistre": "2026-11-24T20:03:05",
+ "note": "import du remake de ziad"
+}

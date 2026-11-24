@@ -1,0 +1,7 @@
+.venv/
+cache/
+exports/
+generations/
+references/
+luts/*.cube
+__pycache__/

@@ -1,0 +1,5 @@
+{"id": "o-20261124-204948-ee45", "date": "2026-11-24T20:49:48", "nature": "repère", "projet": "B0002-remake", "timecode": 4.2, "plan": "p2", "texte": "REPÈRE : TEST STUDIO : le plan 3 arrive trop tôt", "pieces": [], "statut": "nouveau"}
+{"id": "o-20261124-204948-ee45", "statut": "pris", "date": "2026-11-24T20:49:49", "evenement": true}
+{"id": "o-20261124-204948-ee45", "statut": "fait", "date": "2026-11-24T20:49:49", "evenement": true}
+{"id": "o-20261124-205053-3bf0", "date": "2026-11-24T20:50:53", "nature": "à reproduire", "projet": null, "timecode": null, "plan": null, "texte": "À REPRODUIRE : 1 fichier(s) déposé(s) dans MONTAGE-STUDIO/references/2026-11-24_pub-concurrent. Note : TEST STUDIO dépôt", "pieces": ["MONTAGE-STUDIO/references/2026-11-24_pub-concurrent/dossier-test/pub-concurrent.mp4"], "statut": "nouveau"}
+{"id": "o-20261124-205053-3bf0", "statut": "fait", "date": "2026-11-24T20:56:31", "evenement": true}

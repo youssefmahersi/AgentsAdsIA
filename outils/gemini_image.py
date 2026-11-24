@@ -176,7 +176,7 @@ def extraire_images(reponse: dict) -> tuple[list, str]:
 
 def journaliser(ligne: dict) -> None:
     autorises = ("date", "modele", "ratio", "taille", "refs", "nombre", "cout_estime_usd",
-                 "fichiers", "statut", "prompt_debut")
+                 "fichiers", "statut", "prompt_debut", "prompt")
     try:
         JOURNAL.parent.mkdir(parents=True, exist_ok=True)
         with JOURNAL.open("a", encoding="utf-8") as f:
@@ -240,7 +240,8 @@ def commande_image(args) -> int:
     journaliser({"date": datetime.now().isoformat(timespec="seconds"), "modele": modele["id"],
                  "ratio": args.ratio, "taille": args.taille, "refs": len(refs), "nombre": args.nombre,
                  "cout_estime_usd": cout, "fichiers": fichiers,
-                 "statut": "ok" if fichiers else "vide", "prompt_debut": args.prompt[:120]})
+                 "statut": "ok" if fichiers else "vide", "prompt_debut": args.prompt[:120],
+                 "prompt": args.prompt})
     return 0 if fichiers else 1
 
 

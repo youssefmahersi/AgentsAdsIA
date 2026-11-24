@@ -209,6 +209,9 @@ class Gestionnaire(BaseHTTPRequestHandler):
         try:
             if url.path in ("/", "/index.html"):
                 self._envoyer(200, PAGE.read_bytes(), "text/html; charset=utf-8")
+            elif url.path in ("/favicon.ico", "/favicon.png", "/icone.png"):
+                nom = "icone-512.png" if url.path == "/icone.png" else "favicon.png"
+                self._envoyer(200, (PAGE.parent / nom).read_bytes(), "image/png", cache=True)
             elif url.path == "/api/fichiers":
                 self._json({"racines": {k: str(v) for k, v in RACINES.items()}, "fichiers": lister()})
             elif url.path == "/api/version":
@@ -238,7 +241,7 @@ class Gestionnaire(BaseHTTPRequestHandler):
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Lecteur web local des fichiers .md du projet AgentsAds.")
-    ap.add_argument("--port", type=int, default=8765)
+    ap.add_argument("--port", type=int, default=3000)
     ap.add_argument("--no-browser", action="store_true", help="ne pas ouvrir le navigateur")
     args = ap.parse_args(argv)
     serveur = ThreadingHTTPServer(("127.0.0.1", args.port), Gestionnaire)

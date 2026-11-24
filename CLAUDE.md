@@ -20,6 +20,7 @@ Quand l'utilisateur écrit le prénom d'un agent, délègue-lui la mission. Quan
 - **Images et vidéos** : `python3 outils/kie.py` (kie.ai). Clé dans la variable `KIE_API_KEY`. Annonce toujours le coût (`--dry-run`) avant de dépenser.
 - **Images via l'API Gemini** : `python3 outils/gemini_image.py` (clé `GEMINI_API_KEY`, payant à l'image, aucun niveau gratuit). `--dry-run` avant tout envoi.
 - **Contrôle vidéo** : `python3 outils/controle_video.py`, ffmpeg et ffprobe.
+- **Studio Ads** (montage local, `MONTAGE-STUDIO/`) : l'utilisateur y suit les générations, monte, pose des repères et donne des ordres. En début de mission, lire sa boîte : `python3 MONTAGE-STUDIO/outils/ordres.py liste`, puis `pris`, `repondre`, `fait`. Les générations kie se lancent avec `--sortie` pour que leur fichier s'affiche dans le studio.
 - **Voix** : API ElevenLabs (`ELEVENLABS_API_KEY`).
 - **Musique, TTS, écoute** : Gemini (`GEMINI_API_KEY`).
 - **Montage en code** : plugins Remotion et HyperFrames.

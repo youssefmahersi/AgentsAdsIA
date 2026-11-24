@@ -636,7 +636,7 @@ def decision_depense(solde_actuel: float, cout_estime, garde_fous: dict, go: boo
 
 
 CHAMPS_JOURNAL = ("projet", "plan", "essai", "motif", "resolution", "duree", "date", "taskId", "alias", "model", "type", "prompt", "cout_estime",
-                  "etat", "credits", "fichiers")
+                  "etat", "credits", "fichiers", "urls", "chemins", "erreur", "image_debut", "refs")
 
 
 def journaliser(ligne: dict, chemin: Path = None) -> None:
@@ -748,7 +748,8 @@ def commande_generer(args, type_attendu: str) -> int:
                  "prompt": args.prompt, "cout_estime": cout,
                  "projet": getattr(args, "projet", None), "plan": getattr(args, "plan", None),
                  "essai": getattr(args, "essai", None), "motif": getattr(args, "motif", None),
-                 "resolution": args.resolution, "duree": args.duree})
+                 "resolution": args.resolution, "duree": args.duree,
+                 "image_debut": getattr(args, "image_debut", None), "refs": args.ref or None})
 
     if not args.attendre:
         print(f"Suivi : python kie.py etat {task_id}")
@@ -761,18 +762,23 @@ def commande_generer(args, type_attendu: str) -> int:
 def _rendre(resultat: dict, args, task_id: str) -> int:
     if resultat["etat"] != "success":
         print(f"ÉCHEC — état « {resultat['etat']} » : {masquer(resultat['erreur'])}")
+        journaliser({"date": datetime.now().isoformat(timespec="seconds"), "taskId": task_id,
+                     "etat": resultat["etat"], "erreur": str(resultat.get("erreur") or "")[:300]})
         return 1
     credits = resultat.get("credits")
     print(f"OK — {len(resultat['urls'])} fichier(s)"
           + (f", {credits} crédit(s) consommé(s)." if credits is not None else "."))
     for u in resultat["urls"]:
         print("  " + u)
+    chemins = []
     if getattr(args, "sortie", None):
         for u in resultat["urls"]:
             chemin = telecharger(u, Path(args.sortie), prefixe=args.modele if hasattr(args, "modele") else "kie")
+            chemins.append(str(Path(chemin).resolve()))
             print("  -> " + str(chemin))
     journaliser({"date": datetime.now().isoformat(timespec="seconds"), "taskId": task_id,
-                 "etat": "success", "credits": credits, "fichiers": len(resultat["urls"])})
+                 "etat": "success", "credits": credits, "fichiers": len(resultat["urls"]),
+                 "urls": list(resultat["urls"]), "chemins": chemins})
     return 0
 
 

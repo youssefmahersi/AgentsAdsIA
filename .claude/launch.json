@@ -4,8 +4,20 @@
     {
       "name": "lecteur",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["outils/lecteur.py", "--no-browser"],
+      "runtimeArgs": [
+        "outils/lecteur.py",
+        "--no-browser"
+      ],
       "port": 8765
+    },
+    {
+      "name": "studio",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd MONTAGE-STUDIO && exec .venv/bin/python -m serveur.app --mode mac"
+      ],
+      "port": 7880
     }
   ]
 }
