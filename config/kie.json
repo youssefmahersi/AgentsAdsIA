@@ -1,0 +1,236 @@
+{
+  "_lisez_moi": "Config RÉELLE de kie.py (elle passe devant kie.example.json, qui reste le modèle commenté). ⚠️ AUCUNE CLÉ ICI, JAMAIS : la clé vit dans la variable d'environnement KIE_API_KEY. Tarifs relevés sur kie.ai/pricing le 22/09/2026, en CRÉDITS.",
+  "api": {
+    "base_url": "https://api.kie.ai",
+    "timeout_s": 60,
+    "attente_max_s": 900,
+    "intervalle_poll_s": 5
+  },
+  "garde_fous": {
+    "_lisez_moi": "AUCUN SOLDE N'EST STOCKÉ ICI, ET IL NE FAUT JAMAIS EN INSCRIRE UN : kie.py interroge le solde en direct (GET /api/v1/chat/credit, gratuit) avant chaque envoi, et le compare au coût estimé. solde_minimum = sécurité anti-zéro : on ne descend pas sous ce reste. credits_max_par_appel = ceinture anti-accident, PAS un budget : assez large pour ne jamais gêner un usage normal, mais un appel aberrant (durée ou résolution qui dérape, palier non tarifé qui part au majorant) tape dedans et exige --go. exiger_tarif bloque les modèles sans prix connu (veo, nano-banana, nano-banana-edit) : leur coût ne peut pas être vérifié.",
+    "solde_minimum": 20,
+    "credits_max_par_appel": 800,
+    "exiger_tarif": true
+  },
+  "modeles": {
+    "_lisez_moi": "mode 'par_seconde' => coût = tarif × durée (c'est ainsi que kie.ai facture la vidéo). 'cles' liste les champs de l'input qui choisissent la ligne de tarif, dans l'ordre, en minuscules. Un palier absent de la grille déclenche un MAJORANT (le tarif le plus cher du modèle) plutôt qu'une estimation optimiste.",
+    "nano-banana-pro": {
+      "tarif": {
+        "_source": "kie.ai/pricing — Google nano banana pro : 1/2K = 18 cr ($0,09), 4K = 24 cr ($0,12), par image.",
+        "mode": "par_tirage",
+        "cles": [
+          "resolution"
+        ],
+        "par": {
+          "1k": 18,
+          "2k": 18,
+          "4k": 24
+        }
+      }
+    },
+    "kling": {
+      "tarif": {
+        "_source": "kie.ai/pricing — Kling 3.0, par seconde : 720P sans audio 14 / avec audio 20 ; 1080P sans audio 18 / avec audio 27 ; 4K 67 dans les deux cas.",
+        "_hypothese": "La grille de prix parle de 720P/1080P/4K alors que l'API Kling expose 'mode' (std|pro|4K). Correspondance retenue : std=720p, pro=1080p, 4K=4K. À confirmer sur une vraie facture ; en cas de doute, 'mode' inconnu déclenche le majorant (67 cr/s).",
+        "mode": "par_seconde",
+        "cles": [
+          "mode",
+          "sound"
+        ],
+        "par": {
+          "std|false": 14,
+          "std|true": 20,
+          "pro|false": 18,
+          "pro|true": 27,
+          "4k|false": 67,
+          "4k|true": 67
+        }
+      }
+    },
+    "seedance": {
+      "tarif": {
+        "_source": "kie.ai/pricing — bytedance/seedance-2, par seconde, SANS entrée vidéo : 720p 41, 1080p 102, 4K 208. (Avec entrée vidéo : 38/62/128, mais facturé sur durée entrée + sortie — kie.py n'envoie pas de vidéo de référence, donc tarif 'no video input'.)",
+        "_trou": "Le 480p accepté par l'API n'a AUCUN prix affiché : il retombe sur le majorant (208 cr/s). Relève-le avant d'utiliser 480p sur ce modèle.",
+        "mode": "par_seconde",
+        "cles": [
+          "resolution"
+        ],
+        "par": {
+          "720p": 41,
+          "1080p": 102,
+          "4k": 208
+        }
+      }
+    },
+    "seedance-2.5": {
+      "tarif": {
+        "_source": "kie.ai/pricing — bytedance/seedance-2-5, par seconde, SANS entrée vidéo : 480p 28, 720p 63, 1080p 158. (Avec entrée vidéo : 17/38/95, facturé sur entrée + sortie.) Le tarif « avec entrée vidéo » est dans par_avec_video ; kie.py l'applique à (durée d'entrée + durée de sortie) dès qu'une --ref-video est passée (ajout moteur vidéo, 23/09/2026).",
+        "mode": "par_seconde",
+        "cles": [
+          "resolution"
+        ],
+        "par": {
+          "480p": 28,
+          "720p": 63,
+          "1080p": 158
+        },
+        "par_avec_video": {
+          "480p": 17,
+          "720p": 38,
+          "1080p": 95
+        }
+      }
+    },
+    "nano-banana": {
+      "_note": "pas de prix relevé — bloqué par exiger_tarif"
+    },
+    "nano-banana-edit": {
+      "_note": "pas de prix relevé — bloqué par exiger_tarif"
+    },
+    "veo": {
+      "_note": "pas de prix relevé — bloqué par exiger_tarif"
+    },
+    "wan-3": {
+      "model": "wan/3-0-video",
+      "type": "video",
+      "resume": "Wan 3.0 — 2 à 30 s, vidéo pilotée par le son (Audio1).",
+      "prompt_max": 20000,
+      "prompt_min": 3,
+      "champs": {
+        "ref": {
+          "cible": "reference_image_urls",
+          "type": "urls",
+          "max": 10
+        },
+        "ref_audio": {
+          "cible": "reference_audio_urls",
+          "type": "urls",
+          "max": 5
+        },
+        "ratio": {
+          "cible": "aspect_ratio",
+          "type": "enum",
+          "valeurs": [
+            "adaptive",
+            "16:9",
+            "4:3",
+            "1:1",
+            "3:4",
+            "9:16"
+          ],
+          "defaut": "9:16"
+        },
+        "resolution": {
+          "cible": "resolution",
+          "type": "enum",
+          "valeurs": [
+            "480P",
+            "720P",
+            "1080P"
+          ],
+          "defaut": "720P"
+        },
+        "duree": {
+          "cible": "duration",
+          "type": "entier",
+          "min": 2,
+          "max": 30,
+          "defaut": 5
+        },
+        "audio": {
+          "cible": "audio",
+          "type": "booleen",
+          "defaut": true
+        },
+        "image_debut": {
+          "cible": "first_frame_url",
+          "type": "url",
+          "_source": "kie.ai/wan3.0-video, relevé 2026-11-24 : Start Frame = first_frame_url ; exclusif avec reference_image_urls"
+        }
+      },
+      "tarif": {
+        "_source": "kie.ai/wan3.0-video 21/10/2026 : 480P 8, 720P 16, 1080P 32 cr/s (entrée vidéo + sortie)",
+        "mode": "par_seconde",
+        "cles": [
+          "resolution"
+        ],
+        "par": {
+          "480p": 8,
+          "720p": 16,
+          "1080p": 32
+        }
+      }
+    },
+    "wan-3-prime": {
+      "model": "wan/3-0-video-prime",
+      "type": "video",
+      "resume": "Wan 3.0 Prime — 2 à 30 s, qualité supérieure.",
+      "prompt_max": 20000,
+      "prompt_min": 3,
+      "champs": {
+        "ref": {
+          "cible": "reference_image_urls",
+          "type": "urls",
+          "max": 10
+        },
+        "ref_audio": {
+          "cible": "reference_audio_urls",
+          "type": "urls",
+          "max": 5
+        },
+        "ratio": {
+          "cible": "aspect_ratio",
+          "type": "enum",
+          "valeurs": [
+            "adaptive",
+            "16:9",
+            "4:3",
+            "1:1",
+            "3:4",
+            "9:16"
+          ],
+          "defaut": "9:16"
+        },
+        "resolution": {
+          "cible": "resolution",
+          "type": "enum",
+          "valeurs": [
+            "480P",
+            "720P",
+            "1080P"
+          ],
+          "defaut": "720P"
+        },
+        "duree": {
+          "cible": "duration",
+          "type": "entier",
+          "min": 2,
+          "max": 30,
+          "defaut": 5
+        },
+        "audio": {
+          "cible": "audio",
+          "type": "booleen",
+          "defaut": true
+        },
+        "image_debut": {
+          "cible": "first_frame_url",
+          "type": "url",
+          "_source": "kie.ai/wan3.0-video, relevé 2026-11-24 : Start Frame = first_frame_url ; exclusif avec reference_image_urls"
+        }
+      },
+      "tarif": {
+        "_source": "kie.ai/wan3.0-video-prime 21/10/2026 : 480P 12.2, 720P 25.2, 1080P 50.4 cr/s (entrée vidéo + sortie)",
+        "mode": "par_seconde",
+        "cles": [
+          "resolution"
+        ],
+        "par": {
+          "480p": 12.2,
+          "720p": 25.2,
+          "1080p": 50.4
+        }
+      }
+    }
+  }
+}

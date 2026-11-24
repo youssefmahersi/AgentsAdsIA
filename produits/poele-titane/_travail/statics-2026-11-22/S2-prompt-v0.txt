@@ -1,0 +1,14 @@
+Use image 1 as the exact product for the right-hand pan: identical hammered scale-pattern titanium cooking surface over the whole bottom, no smooth central disc, brushed steel rim, hollow split handle with exactly 2 rivets. Do not redesign or recolor it. No logo or text on either pan.
+
+FORMAT: square 1:1 Facebook feed static ad, French language, side-by-side comparison.
+
+LAYOUT:
+- Top band 0-22% height: white background anchored to top. Centered black #010101 bold geometric sans-serif (Poppins Bold style) headline: "Regardez le fond de votre poêle." about 7% of image height, on one or two lines.
+- Middle 22-82%: two equal square photo panels side by side, separated by a thin white gap, both shot from straight above in the same daylight on the same light grey kitchen worktop:
+  LEFT panel: an old generic black non-stick frying pan, no brand, its dark coating covered with many fine scratches, worn grey patches and a few spots where the coating has rubbed off, realistic, not dirty or burnt. Label strip at the bottom of the panel, dark grey #3a3a3a with white bold text "Revêtement rayé".
+  RIGHT panel: the pan from image 1, clean, its hammered titanium surface catching the light. Label strip at the bottom of the panel, navy #0c3358 with white bold text "Titane, sans revêtement".
+- Bottom band 82-100%: navy #0c3358 band anchored to the bottom edge. Left: white bold text "Sans PFAS" large, then smaller white text "Titane · aluminium · inox". Right: red #e11b22 rounded button, white bold text "ACHETER".
+- Wordmark "Titanixxx" small, bold, navy, top-left corner.
+
+Photo style: shot on iPhone, natural light, true colours, light grain. No people, no hands, no smoke, no warning signs, no chemical symbols.
+TEXT RULES: render only the exact French text above, spelled exactly with accents. No other words, no badges, no stars, no numbers.

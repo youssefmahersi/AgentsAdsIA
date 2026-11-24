@@ -1,0 +1,52 @@
+{
+  "_note": "Produit à créer en BROUILLON (status DRAFT), jamais actif. Prix tirés de PRODUIT.md §6. Aucun prix barré (compareAtPrice vide). Stock, poids, SKU, tailles : [À VÉRIFIER].",
+  "product": {
+    "title": "Poêle Titanixxx — surface titane, sans PFAS",
+    "status": "DRAFT",
+    "templateSuffix": "titanixxx-poele",
+    "productOptions": [
+      {
+        "name": "Offre",
+        "values": [
+          {
+            "name": "1 poêle"
+          },
+          {
+            "name": "Lot de 2 poêles"
+          }
+        ]
+      }
+    ],
+    "descriptionHtml": ""
+  },
+  "variants": [
+    {
+      "optionValues": [
+        {
+          "optionName": "Offre",
+          "name": "1 poêle"
+        }
+      ],
+      "price": "59.99",
+      "compareAtPrice": null
+    },
+    {
+      "optionValues": [
+        {
+          "optionName": "Offre",
+          "name": "Lot de 2 poêles"
+        }
+      ],
+      "price": "99.98",
+      "compareAtPrice": null
+    }
+  ],
+  "media_dans_cet_ordre": [
+    "produits/poele-titane/packshots/gemini/02-packshot-fond-blanc.webp",
+    "produits/poele-titane/packshots/gemini/04-detail-texture.webp"
+  ],
+  "fichiers_a_televerser_dans_Contenu_Fichiers": [
+    "04-detail-texture.webp"
+  ],
+  "_note_statics": "Les 3 statics de pub (bouton ACHETER et prix dessinés dans l'image) ne vont pas sur la page : versions « page » sans bouton ni prix à demander à hamid."
+}

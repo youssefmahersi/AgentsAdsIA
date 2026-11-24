@@ -1,0 +1,283 @@
+{%- comment -%}
+  Titanixxx — section produit principale : galerie à gauche, buy box à droite (structure de la page source).
+  Tout est en blocs : l'ordre se change dans l'éditeur de thème.
+{%- endcomment -%}
+{% render 'ttx-head' %}
+{%- liquid
+  assign form_id = 'ttx-form-' | append: section.id
+  assign nb_offres = 0
+  for b in section.blocks
+    if b.type == 'offre'
+      assign nb_offres = nb_offres | plus: 1
+    endif
+  endfor
+  assign defaut = section.settings.offre_par_defaut | default: 1
+  assign rang_offre = 0
+  assign avis_rendus = false
+  assign lignes_emplacements = section.settings.emplacements_galerie | newline_to_br | split: '<br />'
+-%}
+<div class="ttx-produit ttx-wrap">
+  <div class="ttx-produit__grille">
+
+    <div class="ttx-produit__galerie" data-ttx-carousel>
+      <div class="ttx-produit__piste" data-ttx-track>
+        {%- for media in product.media -%}
+          <div class="ttx-produit__slide">
+            {%- case media.media_type -%}
+              {%- when 'image' -%}
+                {%- if forloop.first -%}
+                  {{ media | image_url: width: 1400 | image_tag: width: 700, height: 700, fetchpriority: 'high', sizes: '(min-width: 990px) 560px, 100vw', widths: '400, 600, 800, 1000, 1400', alt: media.alt | default: product.title }}
+                {%- else -%}
+                  {{ media | image_url: width: 1400 | image_tag: width: 700, height: 700, loading: 'lazy', sizes: '(min-width: 990px) 560px, 100vw', widths: '400, 600, 800, 1000, 1400', alt: media.alt | default: product.title }}
+                {%- endif -%}
+              {%- when 'video' -%}
+                {{ media | video_tag: controls: true, muted: true, playsinline: true, preload: 'none', image_size: '1000x' }}
+              {%- when 'external_video' -%}
+                {{ media | external_video_tag }}
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+        {%- if section.settings.afficher_emplacements -%}
+          {%- for ligne in lignes_emplacements -%}
+            {%- assign libelle = ligne | strip -%}
+            {%- if libelle != blank -%}
+              <div class="ttx-produit__slide">{% render 'ttx-emplacement', libelle: libelle, ratio: '1 / 1' %}</div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+      <button type="button" class="ttx-fleche ttx-fleche--prec" data-ttx-prev aria-label="Image précédente">‹</button>
+      <button type="button" class="ttx-fleche ttx-fleche--suiv" data-ttx-next aria-label="Image suivante">›</button>
+      <div class="ttx-produit__vignettes">
+        {%- assign rang = 0 -%}
+        {%- for media in product.media -%}
+          <button type="button" class="ttx-produit__vignette{% if forloop.first %} is-active{% endif %}" data-ttx-goto="{{ rang }}" aria-label="Voir l'image {{ rang | plus: 1 }}">
+            {{ media.preview_image | image_url: width: 160 | image_tag: width: 80, height: 80, loading: 'lazy', alt: '' }}
+          </button>
+          {%- assign rang = rang | plus: 1 -%}
+        {%- endfor -%}
+        {%- if section.settings.afficher_emplacements -%}
+          {%- for ligne in lignes_emplacements -%}
+            {%- assign libelle = ligne | strip -%}
+            {%- if libelle != blank -%}
+              <button type="button" class="ttx-produit__vignette ttx-produit__vignette--vide" data-ttx-goto="{{ rang }}" aria-label="Emplacement {{ rang | plus: 1 }}">?</button>
+              {%- assign rang = rang | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="ttx-produit__infos" id="ttx-achat">
+      <form id="{{ form_id }}" method="post" action="{{ routes.cart_add_url }}" accept-charset="UTF-8" class="ttx-produit__form">
+        <input type="hidden" name="form_type" value="product">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="quantity" value="1">
+        {%- if nb_offres == 0 -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {%- endif -%}
+      </form>
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+
+          {%- when 'sur_titre' -%}
+            <p class="ttx-produit__surtitre" {{ block.shopify_attributes }}>{{ block.settings.texte | escape }}</p>
+
+          {%- when 'titre' -%}
+            <h1 class="ttx-produit__titre" {{ block.shopify_attributes }}>{{ block.settings.texte | default: product.title | escape }}</h1>
+
+          {%- when 'sous_titre' -%}
+            <p class="ttx-produit__soustitre" {{ block.shopify_attributes }}>{{ block.settings.texte }}</p>
+
+          {%- when 'puce' -%}
+            <p class="ttx-produit__puce" {{ block.shopify_attributes }}>
+              <svg class="ttx-produit__puce-ico" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-6.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>{{ block.settings.texte }}</span>
+            </p>
+
+          {%- when 'encart' -%}
+            <div class="ttx-encart" {{ block.shopify_attributes }}>
+              <span class="ttx-encart__ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M8 12l3 3 5-5.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="ttx-encart__txt">
+                <span class="ttx-encart__titre">{{ block.settings.titre | escape }}</span>
+                <span class="ttx-encart__sous">{{ block.settings.sous_titre | escape }}</span>
+                {%- if block.settings.texte != blank -%}<span class="ttx-encart__petit">{{ block.settings.texte }}</span>{%- endif -%}
+              </span>
+            </div>
+
+          {%- when 'titre_offres' -%}
+            <p class="ttx-ligne-titre" {{ block.shopify_attributes }}><span>{{ block.settings.texte | escape }}</span></p>
+
+          {%- when 'offre' -%}
+            {%- assign rang_offre = rang_offre | plus: 1 -%}
+            {%- if rang_offre == defaut -%}{%- assign coche = true -%}{%- else -%}{%- assign coche = false -%}{%- endif -%}
+            {% render 'ttx-offre', bloc: block, product: product, form_id: form_id, coche: coche %}
+
+          {%- when 'badges' -%}
+            <div class="ttx-badges" {{ block.shopify_attributes }}>
+              {%- if block.settings.badge_1 != blank -%}<span class="ttx-badge ttx-badge--vert">{{ block.settings.badge_1 | escape }}</span>{%- endif -%}
+              {%- if block.settings.badge_2 != blank -%}<span class="ttx-badge ttx-badge--bleu">{{ block.settings.badge_2 | escape }}</span>{%- endif -%}
+            </div>
+
+          {%- when 'bouton' -%}
+            <button type="submit" form="{{ form_id }}" name="add" class="ttx-cta ttx-cta--large" {{ block.shopify_attributes }}
+              {% unless product.available %}disabled{% endunless %}>
+              {%- if product.available -%}{{ block.settings.texte | escape }}{%- else -%}Épuisé{%- endif -%}
+            </button>
+
+          {%- when 'paiements' -%}
+            <ul class="ttx-paiements" {{ block.shopify_attributes }} aria-label="Moyens de paiement">
+              {%- for type in shop.enabled_payment_types -%}
+                <li>{{ type | payment_type_svg_tag: class: 'ttx-paiements__ico' }}</li>
+              {%- endfor -%}
+            </ul>
+
+          {%- when 'avis_court' -%}
+            {%- unless avis_rendus -%}
+              {%- assign avis_rendus = true -%}
+              <div class="ttx-avis-courts" data-ttx-carousel>
+                {% render 'ttx-avis-source', intitule: section.settings.avis_intitule, collecte: section.settings.avis_collecte %}
+                <div class="ttx-avis-courts__piste" data-ttx-track>
+                  {%- for b in section.blocks -%}
+                    {%- if b.type == 'avis_court' -%}
+                      {% render 'ttx-avis-carte', bloc: b, variante: 'court' %}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endunless -%}
+
+          {%- when 'accordeon' -%}
+            <details class="ttx-accordeon" {{ block.shopify_attributes }}>
+              <summary class="ttx-accordeon__titre">{{ block.settings.titre | escape }}<span class="ttx-accordeon__plus" aria-hidden="true"></span></summary>
+              <div class="ttx-accordeon__contenu">{{ block.settings.contenu }}</div>
+            </details>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+  {%- if section.settings.barre_mobile -%}
+    <div class="ttx-collant" data-ttx-collant hidden>
+      <span class="ttx-collant__txt">{{ section.settings.barre_mobile_prefixe | escape }} <strong>{{ product.price_min | money }}</strong></span>
+      <button type="submit" form="{{ form_id }}" name="add" class="ttx-cta ttx-collant__btn" {% unless product.available %}disabled{% endunless %}>{{ section.settings.barre_mobile_texte | escape }}</button>
+    </div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .ttx-produit { padding-block: clamp(16px, 3vw, 40px); }
+  .ttx-produit__grille { display: grid; gap: 24px; }
+  @media (min-width: 990px) {
+    .ttx-produit__grille { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 5vw, 80px); align-items: start; }
+    .ttx-produit__galerie { position: sticky; top: 24px; }
+  }
+  .ttx-produit__galerie { position: relative; min-width: 0; }
+  .ttx-produit__piste { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 10px; }
+  .ttx-produit__piste::-webkit-scrollbar { display: none; }
+  .ttx-produit__slide { flex: 0 0 100%; scroll-snap-align: start; aspect-ratio: 1 / 1; background: #f4f5f7; }
+  .ttx-produit__slide img, .ttx-produit__slide video { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .ttx-produit__vignettes { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; scrollbar-width: none; }
+  .ttx-produit__vignette { flex: 0 0 64px; height: 64px; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: #f4f5f7; cursor: pointer; font: 700 18px/1 var(--ttx-police); color: #7a828c; }
+  .ttx-produit__vignette img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ttx-produit__vignette.is-active { border-color: var(--ttx-navy); }
+  .ttx-produit__infos { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .ttx-produit__surtitre { align-self: center; margin: 0; padding: 4px 12px; border: 2px solid var(--ttx-texte); font: 800 clamp(15px, 1.4vw, 18px)/1.2 var(--ttx-police); letter-spacing: .02em; text-transform: uppercase; text-align: center; }
+  .ttx-produit__titre { margin: 0; font: 700 clamp(24px, 2.4vw, 32px)/1.2 var(--ttx-police); color: var(--ttx-texte); overflow-wrap: anywhere; }
+  .ttx-produit__soustitre { margin: -6px 0 0; font: 400 clamp(15px, 1.2vw, 17px)/1.5 var(--ttx-police); color: #3c4450; }
+  .ttx-produit__puce { display: flex; gap: 10px; align-items: flex-start; margin: 0; font: 500 clamp(15px, 1.2vw, 17px)/1.4 var(--ttx-police); }
+  .ttx-produit__puce + .ttx-produit__puce { margin-top: -6px; }
+  .ttx-produit__puce strong { color: var(--ttx-bleu); font-weight: 600; }
+  .ttx-produit__puce-ico { flex: 0 0 20px; margin-top: 1px; fill: var(--ttx-navy); }
+  .ttx-encart { display: flex; gap: 16px; align-items: center; padding: 14px 18px; background: #f4f5f7; border-radius: 10px; }
+  .ttx-encart__ico { flex: 0 0 64px; height: 64px; border-radius: 50%; background: var(--ttx-navy); display: grid; place-items: center; }
+  .ttx-encart__txt { display: flex; flex-direction: column; min-width: 0; }
+  .ttx-encart__titre { font: 900 clamp(20px, 2vw, 26px)/1.05 var(--ttx-police-titre); text-transform: uppercase; color: var(--ttx-texte); }
+  .ttx-encart__sous { font: 700 clamp(14px, 1.2vw, 16px)/1.25 var(--ttx-police); text-transform: uppercase; color: var(--ttx-bleu); }
+  .ttx-encart__petit { margin-top: 2px; font: 400 12px/1.35 var(--ttx-police); color: #3c4450; }
+  .ttx-avis-courts { border-top: 1px solid #e6e8ec; padding-top: 12px; }
+  .ttx-avis-courts__piste { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 16px; }
+  .ttx-avis-courts__piste > * { flex: 0 0 100%; scroll-snap-align: start; }
+  .ttx-accordeon { border-bottom: 1px solid #e6e8ec; }
+  .ttx-accordeon:first-of-type { border-top: 1px solid #e6e8ec; }
+  .ttx-accordeon__titre { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; font: 700 14px/1.3 var(--ttx-police); letter-spacing: .04em; text-transform: uppercase; }
+  .ttx-accordeon__titre::-webkit-details-marker { display: none; }
+  .ttx-accordeon__plus { position: relative; flex: 0 0 14px; height: 14px; }
+  .ttx-accordeon__plus::before, .ttx-accordeon__plus::after { content: ""; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; background: currentColor; transition: transform .2s; }
+  .ttx-accordeon__plus::after { transform: rotate(90deg); }
+  .ttx-accordeon[open] .ttx-accordeon__plus::after { transform: rotate(0); }
+  .ttx-accordeon__contenu { padding-bottom: 16px; font: 400 15px/1.55 var(--ttx-police); color: #2b313a; }
+  .ttx-accordeon__contenu p { margin: 0 0 10px; }
+  .ttx-collant { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: #fff; box-shadow: 0 -4px 16px rgba(0,0,0,.12); }
+  .ttx-collant[hidden] { display: none; }
+  .ttx-collant__txt { flex: 1; min-width: 0; font: 600 13px/1.3 var(--ttx-police); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ttx-collant__btn { flex: 0 0 auto; min-height: 48px; padding-inline: 18px; }
+  body.ttx-collant-actif { padding-bottom: 72px; }
+  @media (min-width: 990px) { .ttx-collant { display: none; } body.ttx-collant-actif { padding-bottom: 0; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — Produit (buy box)",
+  "tag": "section",
+  "class": "section-ttx-produit",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "range", "id": "offre_par_defaut", "label": "Offre cochée par défaut (rang)", "min": 1, "max": 4, "step": 1, "default": 1 },
+    { "type": "checkbox", "id": "barre_mobile", "label": "Barre d'achat collante sur mobile", "default": true, "info": "Absente de la page source : ajoutée pour que le bouton d'achat soit visible dès le premier écran mobile." },
+    { "type": "text", "id": "barre_mobile_prefixe", "label": "Texte avant le prix", "default": "À partir de" },
+    { "type": "text", "id": "barre_mobile_texte", "label": "Texte de la barre", "default": "➜ AJOUTER AU PANIER" },
+    { "type": "header", "content": "Emplacements d'images à produire" },
+    { "type": "checkbox", "id": "afficher_emplacements", "label": "Afficher les emplacements vides (brouillon)", "default": true, "info": "À décocher avant publication." },
+    { "type": "textarea", "id": "emplacements_galerie", "label": "Emplacements galerie (un par ligne)" },
+    { "type": "header", "content": "Avis (transparence Omnibus)" },
+    { "type": "text", "id": "avis_intitule", "label": "Intitulé au-dessus des avis", "default": "Avis clients recueillis par notre fabricant sur ce modèle de poêle" },
+    { "type": "inline_richtext", "id": "avis_collecte", "label": "Comment ces avis sont collectés", "default": "Comment ces avis sont collectés : [À COMPLÉTER]" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "sur_titre", "name": "Sur-titre encadré", "limit": 1, "settings": [ { "type": "text", "id": "texte", "label": "Texte", "default": "SANS PFAS · SANS REVÊTEMENT" } ] },
+    { "type": "titre", "name": "Titre", "limit": 1, "settings": [ { "type": "text", "id": "texte", "label": "Titre (vide = titre du produit)" } ] },
+    { "type": "sous_titre", "name": "Sous-titre", "limit": 1, "settings": [ { "type": "inline_richtext", "id": "texte", "label": "Texte", "default": "Sous-titre" } ] },
+    { "type": "puce", "name": "Puce", "settings": [ { "type": "inline_richtext", "id": "texte", "label": "Texte (le gras passe en bleu)", "default": "Avantage <strong>en bleu</strong>" } ] },
+    { "type": "encart", "name": "Encart garantie", "settings": [
+      { "type": "text", "id": "titre", "label": "Titre", "default": "30 JOURS" },
+      { "type": "text", "id": "sous_titre", "label": "Sous-titre", "default": "POUR CHANGER D'AVIS" },
+      { "type": "inline_richtext", "id": "texte", "label": "Petit texte" }
+    ] },
+    { "type": "titre_offres", "name": "Titre des offres", "settings": [ { "type": "text", "id": "texte", "label": "Texte", "default": "CHOISISSEZ VOTRE OFFRE" } ] },
+    { "type": "offre", "name": "Offre (palier)", "settings": [
+      { "type": "text", "id": "titre", "label": "Nom de l'offre", "default": "1x Poêle" },
+      { "type": "number", "id": "variante", "label": "Variante du produit (rang 1, 2, 3…)", "default": 1, "info": "Le prix affiché est celui de cette variante." },
+      { "type": "number", "id": "quantite_ref", "label": "Équivaut à combien de poêles seules", "default": 1, "info": "Sert à calculer l'économie exacte face à la variante n°1." },
+      { "type": "checkbox", "id": "afficher_pourcentage", "label": "Afficher le pourcentage d'économie dans le badge", "default": true },
+      { "type": "text", "id": "badge", "label": "Badge (texte libre, doit être vrai)" },
+      { "type": "text", "id": "sous_titre", "label": "Sous-titre si aucune économie" },
+      { "type": "image_picker", "id": "image", "label": "Vignette (vide = image du produit)" }
+    ] },
+    { "type": "badges", "name": "Badges sous les offres", "settings": [
+      { "type": "text", "id": "badge_1", "label": "Badge vert", "default": "30 jours pour changer d'avis" },
+      { "type": "text", "id": "badge_2", "label": "Badge bleu" }
+    ] },
+    { "type": "bouton", "name": "Bouton d'achat", "limit": 1, "settings": [ { "type": "text", "id": "texte", "label": "Texte", "default": "➜ AJOUTER AU PANIER" } ] },
+    { "type": "paiements", "name": "Logos de paiement", "limit": 1, "settings": [] },
+    { "type": "avis_court", "name": "Avis court (fabricant)", "settings": [
+      { "type": "text", "id": "nom", "label": "Prénom + initiale", "default": "Prénom N." },
+      { "type": "range", "id": "note", "label": "Note", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "text", "id": "titre", "label": "Accroche (en gras)" },
+      { "type": "textarea", "id": "texte", "label": "Avis (mot pour mot)" },
+      { "type": "text", "id": "pays", "label": "Pays" },
+      { "type": "image_picker", "id": "photo", "label": "Photo (fournie par le fabricant)" }
+    ] },
+    { "type": "accordeon", "name": "Accordéon", "settings": [
+      { "type": "text", "id": "titre", "label": "Titre", "default": "TITRE" },
+      { "type": "richtext", "id": "contenu", "label": "Contenu", "default": "<p>Texte</p>" }
+    ] }
+  ],
+  "presets": [ { "name": "TTX — Produit (buy box)" } ]
+}
+{% endschema %}

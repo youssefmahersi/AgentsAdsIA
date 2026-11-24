@@ -1,0 +1,436 @@
+{
+ "by": "claude",
+ "shots": [
+  {
+   "id": "shot_001",
+   "time": "0.00-3.13",
+   "label_probs": {
+    "live_action": 0.7,
+    "ai_video": 0.3
+   },
+   "image_source": "live_action",
+   "evidence": [
+    "Mouvements physiques cohérents : la spatule glisse sous les œufs, le retournement en l'air a un flou de mouvement naturel et la face cuite est dorée de façon plausible",
+    "Même poêle martelée, même gazinière blanche et même décor sombre sur tous les plans, sans déformation de la main ni du manche",
+    "Profondeur de champ courte et lumière chaude de studio : allure de vidéo produit fournisseur, recadrée en 9:16 ; probabilité IA non nulle car l'image est très propre"
+   ],
+   "description": "Œufs versés depuis un verre doseur dans la poêle vide, titre incrusté",
+   "narrative": {
+    "role": "",
+    "point": ""
+   },
+   "embedded_assets": [],
+   "ai_edits": [],
+   "same_clip_as": null,
+   "replication": {
+    "image_prompt": "",
+    "video_prompt": "",
+    "video_prompt_en": ""
+   },
+   "aspects": {
+    "framing": {
+     "shot_size": "",
+     "camera_angle": "",
+     "composition": ""
+    },
+    "camera": {
+     "camera_support": "",
+     "lens": "",
+     "speed": ""
+    },
+    "lighting": {
+     "location": "",
+     "key_light": "",
+     "light_quality": "",
+     "fill_light": "",
+     "rim_light": "",
+     "catchlight": "",
+     "practicals": "",
+     "color_temp": "",
+     "lighting_setup": ""
+    },
+    "grade": {
+     "color_grade": ""
+    }
+   },
+   "performance": {
+    "who": "",
+    "emotion": "",
+    "intensity": "",
+    "face": "",
+    "body": "",
+    "arc": [],
+    "voice": "",
+    "key": false,
+    "move": "",
+    "movers": 0,
+    "full_body": null,
+    "backdrop": "",
+    "en": ""
+   }
+  },
+  {
+   "id": "shot_002",
+   "time": "3.13-5.60",
+   "label_probs": {
+    "live_action": 0.7,
+    "ai_video": 0.3
+   },
+   "image_source": "live_action",
+   "evidence": [
+    "Mouvements physiques cohérents : la spatule glisse sous les œufs, le retournement en l'air a un flou de mouvement naturel et la face cuite est dorée de façon plausible",
+    "Même poêle martelée, même gazinière blanche et même décor sombre sur tous les plans, sans déformation de la main ni du manche",
+    "Profondeur de champ courte et lumière chaude de studio : allure de vidéo produit fournisseur, recadrée en 9:16 ; probabilité IA non nulle car l'image est très propre"
+   ],
+   "description": "Gros plan : une dizaine d'œufs au plat, une spatule glisse dessous",
+   "narrative": {
+    "role": "",
+    "point": ""
+   },
+   "embedded_assets": [],
+   "ai_edits": [],
+   "same_clip_as": null,
+   "replication": {
+    "image_prompt": "",
+    "video_prompt": "",
+    "video_prompt_en": ""
+   },
+   "performance": {
+    "who": "",
+    "emotion": "",
+    "intensity": "",
+    "face": "",
+    "body": "",
+    "arc": [],
+    "voice": "",
+    "key": false,
+    "move": "",
+    "movers": 0,
+    "full_body": null,
+    "backdrop": "",
+    "en": ""
+   }
+  },
+  {
+   "id": "shot_003",
+   "time": "5.60-7.20",
+   "label_probs": {
+    "live_action": 0.7,
+    "ai_video": 0.3
+   },
+   "image_source": "live_action",
+   "evidence": [
+    "Mouvements physiques cohérents : la spatule glisse sous les œufs, le retournement en l'air a un flou de mouvement naturel et la face cuite est dorée de façon plausible",
+    "Même poêle martelée, même gazinière blanche et même décor sombre sur tous les plans, sans déformation de la main ni du manche",
+    "Profondeur de champ courte et lumière chaude de studio : allure de vidéo produit fournisseur, recadrée en 9:16 ; probabilité IA non nulle car l'image est très propre"
+   ],
+   "description": "Les œufs glissent dans la poêle inclinée",
+   "narrative": {
+    "role": "",
+    "point": ""
+   },
+   "embedded_assets": [],
+   "ai_edits": [],
+   "same_clip_as": null,
+   "replication": {
+    "image_prompt": "",
+    "video_prompt": "",
+    "video_prompt_en": ""
+   },
+   "aspects": {
+    "framing": {
+     "shot_size": "",
+     "camera_angle": "",
+     "composition": ""
+    },
+    "camera": {
+     "camera_support": "",
+     "lens": "",
+     "speed": ""
+    },
+    "lighting": {
+     "location": "",
+     "key_light": "",
+     "light_quality": "",
+     "fill_light": "",
+     "rim_light": "",
+     "catchlight": "",
+     "practicals": "",
+     "color_temp": "",
+     "lighting_setup": ""
+    },
+    "grade": {
+     "color_grade": ""
+    }
+   },
+   "performance": {
+    "who": "",
+    "emotion": "",
+    "intensity": "",
+    "face": "",
+    "body": "",
+    "arc": [],
+    "voice": "",
+    "key": false,
+    "move": "",
+    "movers": 0,
+    "full_body": null,
+    "backdrop": "",
+    "en": ""
+   }
+  },
+  {
+   "id": "shot_004",
+   "time": "7.20-9.63",
+   "label_probs": {
+    "live_action": 0.7,
+    "ai_video": 0.3
+   },
+   "image_source": "live_action",
+   "evidence": [
+    "Mouvements physiques cohérents : la spatule glisse sous les œufs, le retournement en l'air a un flou de mouvement naturel et la face cuite est dorée de façon plausible",
+    "Même poêle martelée, même gazinière blanche et même décor sombre sur tous les plans, sans déformation de la main ni du manche",
+    "Profondeur de champ courte et lumière chaude de studio : allure de vidéo produit fournisseur, recadrée en 9:16 ; probabilité IA non nulle car l'image est très propre"
+   ],
+   "description": "La poêle est retournée : la galette d'œufs saute et retombe dorée",
+   "narrative": {
+    "role": "",
+    "point": ""
+   },
+   "embedded_assets": [],
+   "ai_edits": [],
+   "same_clip_as": null,
+   "replication": {
+    "image_prompt": "",
+    "video_prompt": "",
+    "video_prompt_en": ""
+   },
+   "aspects": {
+    "framing": {
+     "shot_size": "",
+     "camera_angle": "",
+     "composition": ""
+    },
+    "camera": {
+     "camera_support": "",
+     "lens": "",
+     "speed": ""
+    },
+    "lighting": {
+     "location": "",
+     "key_light": "",
+     "light_quality": "",
+     "fill_light": "",
+     "rim_light": "",
+     "catchlight": "",
+     "practicals": "",
+     "color_temp": "",
+     "lighting_setup": ""
+    },
+    "grade": {
+     "color_grade": ""
+    }
+   },
+   "performance": {
+    "who": "",
+    "emotion": "",
+    "intensity": "",
+    "face": "",
+    "body": "",
+    "arc": [],
+    "voice": "",
+    "key": false,
+    "move": "",
+    "movers": 0,
+    "full_body": null,
+    "backdrop": "",
+    "en": ""
+   }
+  },
+  {
+   "id": "shot_005",
+   "time": "9.63-10.23",
+   "label_probs": {
+    "live_action": 0.7,
+    "ai_video": 0.3
+   },
+   "image_source": "live_action",
+   "evidence": [
+    "Mouvements physiques cohérents : la spatule glisse sous les œufs, le retournement en l'air a un flou de mouvement naturel et la face cuite est dorée de façon plausible",
+    "Même poêle martelée, même gazinière blanche et même décor sombre sur tous les plans, sans déformation de la main ni du manche",
+    "Profondeur de champ courte et lumière chaude de studio : allure de vidéo produit fournisseur, recadrée en 9:16 ; probabilité IA non nulle car l'image est très propre"
+   ],
+   "description": "Plan final sur la galette dorée dans la poêle",
+   "narrative": {
+    "role": "",
+    "point": ""
+   },
+   "embedded_assets": [],
+   "ai_edits": [],
+   "same_clip_as": null,
+   "replication": {
+    "image_prompt": "",
+    "video_prompt": "",
+    "video_prompt_en": ""
+   },
+   "aspects": {
+    "framing": {
+     "shot_size": "",
+     "camera_angle": "",
+     "composition": ""
+    },
+    "camera": {
+     "camera_support": "",
+     "lens": "",
+     "speed": ""
+    },
+    "lighting": {
+     "location": "",
+     "key_light": "",
+     "light_quality": "",
+     "fill_light": "",
+     "rim_light": "",
+     "catchlight": "",
+     "practicals": "",
+     "color_temp": "",
+     "lighting_setup": ""
+    },
+    "grade": {
+     "color_grade": ""
+    }
+   },
+   "performance": {
+    "who": "",
+    "emotion": "",
+    "intensity": "",
+    "face": "",
+    "body": "",
+    "arc": [],
+    "voice": "",
+    "key": false,
+    "move": "",
+    "movers": 0,
+    "full_body": null,
+    "backdrop": "",
+    "en": ""
+   }
+  },
+  {
+   "id": "shot_006",
+   "time": "10.23-11.37",
+   "label_probs": {
+    "code_render": 0.9,
+    "static_hold": 0.1
+   },
+   "image_source": "code_render",
+   "evidence": [
+    "Fond dégradé plat, logo et bouton vectoriels, texte net : carte de fin faite dans un éditeur ou en code"
+   ],
+   "description": "Carte de fin : logo, bouton « Commandez maintenant », adresse du site sur fond dégradé rose",
+   "narrative": {
+    "role": "",
+    "point": ""
+   },
+   "embedded_assets": [],
+   "ai_edits": [],
+   "same_clip_as": null,
+   "replication": {
+    "image_prompt": "",
+    "video_prompt": "",
+    "video_prompt_en": ""
+   },
+   "performance": {
+    "who": "",
+    "emotion": "",
+    "intensity": "",
+    "face": "",
+    "body": "",
+    "arc": [],
+    "voice": "",
+    "key": false,
+    "move": "",
+    "movers": 0,
+    "full_body": null,
+    "backdrop": "",
+    "en": ""
+   }
+  }
+ ],
+ "aspects": {
+  "camera": {
+   "setups": "",
+   "gear_guess": ""
+  },
+  "lighting": {
+   "lighting_overall": ""
+  },
+  "grade": {
+   "grade_overall": ""
+  },
+  "editing": {
+   "editing": ""
+  },
+  "format": {
+   "format": ""
+  }
+ },
+ "story": {
+  "summary": "",
+  "hook": "",
+  "highlights": [
+   ""
+  ]
+ },
+ "cast": {
+  "style": "",
+  "characters": [
+   {
+    "id": "A",
+    "name": "",
+    "kind": "",
+    "look": "",
+    "role": "",
+    "voice": "",
+    "shots": []
+   }
+  ],
+  "scenes": [
+   {
+    "id": "S1",
+    "where": "",
+    "when": "",
+    "look": "",
+    "shots": []
+   }
+  ],
+  "props": [
+   {
+    "name": "",
+    "note": "",
+    "shots": []
+   }
+  ]
+ },
+ "packaging": {
+  "stickers": [],
+  "text": [
+   {
+    "id": "text_001",
+    "kind": ""
+   },
+   {
+    "id": "text_002",
+    "kind": ""
+   },
+   {
+    "id": "text_003",
+    "kind": ""
+   },
+   {
+    "id": "text_004",
+    "kind": ""
+   }
+  ],
+  "missed": []
+ }
+}

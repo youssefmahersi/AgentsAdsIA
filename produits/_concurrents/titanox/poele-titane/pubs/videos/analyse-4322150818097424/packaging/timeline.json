@@ -1,0 +1,135 @@
+{
+  "text": [
+    {
+      "id": "text_001",
+      "kind": "title",
+      "kind_zh": "title",
+      "t0": 0.0,
+      "t1": 9.0,
+      "text": "JEN'UTILISERAIPLUSJAMAIS",
+      "bbox": [
+        0.1111,
+        0.2391,
+        0.7778,
+        0.0241
+      ],
+      "style": {
+        "fill_name": "black",
+        "fill": "#030303",
+        "weight": 0.191
+      },
+      "style_zh": "black text, line height 2.3% (about 30px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_002",
+      "kind": "title",
+      "kind_zh": "title",
+      "t0": 0.0,
+      "t1": 9.0,
+      "text": "DE POELES BON MARCHE",
+      "bbox": [
+        0.1653,
+        0.2812,
+        0.6708,
+        0.032
+      ],
+      "style": {
+        "fill_name": "black",
+        "fill": "#020202",
+        "weight": 0.147
+      },
+      "style_zh": "black text, line height 3.0% (about 39px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    }
+  ],
+  "stickers": [],
+  "sfx": [
+    {
+      "t": 0.05,
+      "type": "ding",
+      "description": null,
+      "source": "effects_stem",
+      "confidence": "medium",
+      "on": {
+        "type": "title_in",
+        "what": "title \"JEN'UTILISERAIPL\" appears",
+        "dt": -0.05,
+        "ref": "text_001"
+      }
+    },
+    {
+      "t": 4.29,
+      "type": "pop",
+      "description": null,
+      "source": "effects_stem",
+      "confidence": "medium",
+      "on": null
+    },
+    {
+      "t": 5.54,
+      "type": "click",
+      "description": null,
+      "source": "effects_stem",
+      "confidence": "medium",
+      "on": {
+        "type": "cut",
+        "what": "cut",
+        "dt": 0.06,
+        "ref": null
+      }
+    },
+    {
+      "t": 6.75,
+      "type": "click",
+      "description": null,
+      "source": "effects_stem",
+      "confidence": "medium",
+      "on": null
+    },
+    {
+      "t": 7.28,
+      "type": "pop",
+      "description": null,
+      "source": "effects_stem",
+      "confidence": "medium",
+      "on": {
+        "type": "cut",
+        "what": "cut",
+        "dt": -0.08,
+        "ref": null
+      }
+    },
+    {
+      "t": 10.14,
+      "type": "other",
+      "description": null,
+      "source": "effects_stem",
+      "confidence": "medium",
+      "on": {
+        "type": "cut",
+        "what": "cut",
+        "dt": 0.093,
+        "ref": null
+      }
+    }
+  ]
+}

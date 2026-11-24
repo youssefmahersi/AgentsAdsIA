@@ -1,0 +1,16 @@
+SUBJECT / SCENE: A knife enthusiast's real workbench at home: a dark walnut board on a dark charcoal worktop, a folded linen cloth, a Japanese-style chef's knife with a plain wooden handle lying flat behind the product, blade pointing left, edge turned away from camera, no engraving or writing on the blade, slightly out of focus and darker than the product. Background: a dim kitchen wall in deep charcoal tones, softly out of focus. No person and no hands anywhere in the frame.
+
+PRODUCT: The attached image is the real product photo. Reproduce exactly the wooden roller sharpener and the wooden magnetic angle support from the reference: shape, proportions, beech wood colour and grain, the two black silicone rings and brushed steel discs at each end of the roller, the grey metal plate engraved "15°" on the support. Show ONLY these two pieces, complete and uncut. The two loose discs and the words "diamond1000" and "diamond400" from the reference must not appear anywhere. No box, no packaging. The roller stands upright, CENTERED horizontally, in the foreground at the front edge of the board, closest object to the lens; its height is at least 30 % of the image height; the support lies just to its right with the "15°" plate facing the camera. It is the largest, brightest and sharpest object in the frame, with a soft contact shadow and steel reflections matching the side light.
+
+LIGHT: A single window on the right, low side light, neutral-warm about 4500 K, raking across the wood grain and the steel discs, deep soft shadows to the left.
+
+TEXT / LANGUAGE (French, rendered exactly, letter for letter, no other text):
+- Top 25 % of the image, centered, on a flat charcoal band #1C1A17: headline in an elegant medium-weight serif (Fraunces style), cream #F4EDE1, large, sentence case: "15° ou 20°, tenus pour vous." Under it, smaller, clean sans-serif (Inter style), cream: "Sans geste à apprendre."
+- Bottom 18 % of the image, on a flat cream band #F4EDE1, clean sans-serif charcoal #1C1A17, two short lines on the left: "Diamant #400 : aiguiser" / "Diamant #1000 : affiner". On the right of the same band: price "39,99 €" in bold dark wood brown #8A4B25, and next to it the old price "49,99 €" smaller, charcoal, with a clean horizontal strike-through line.
+- Text never covers the product. No English word anywhere.
+
+STYLE / DA: Real iPhone photo, moody but natural, slight imperfection, light sensor grain, imperfect handheld framing, no retouching, artisanal and precise mood; only the two text bands are clean graphic layout. shot on iPhone, natural daylight, slight motion blur, light sensor grain, imperfect handheld framing, lived-in real environment, no studio lighting, no CGI, no 3D render, no beauty retouch.
+
+FORMAT: square 1:1.
+
+NEGATIVES: no third-party logo or brand, no misspelled or gibberish text, no English text, no floating or pasted-on product, no small or background product, no product different from the reference, no black roller, no coloured discs, no extra loose discs, no invented box or packaging, no studio or glossy advertising look, no person, no fingers on the blade edge, no blood, no star rating, no customer count, no lifetime guarantee, no claim about compatibility with all knives.

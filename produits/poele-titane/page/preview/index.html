@@ -1,0 +1,560 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APERÇU LOCAL — Poêle Titanixxx</title>
+<style>body{margin:0} .apercu-entete{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #e6e8ec;font:600 13px/1.3 system-ui;color:#46546a;background:#fafbfc}
+.apercu-pied{padding:28px 16px;background:#010101;color:#9aa7b8;font:500 12px/1.4 system-ui;text-align:center}
+
+  .ttx-annonce { background: #111315; color: #fff; overflow: hidden; }
+  .ttx-annonce__piste { display: flex; width: max-content; animation: ttx-defile 40s linear infinite; }
+  .ttx-annonce__groupe { display: flex; }
+  .ttx-annonce__msg { padding: 8px 28px; font: 700 13px/1.2 var(--ttx-police); letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
+  @keyframes ttx-defile { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ttx-annonce__piste { animation: none; } }
+
+  .ttx-produit { padding-block: clamp(16px, 3vw, 40px); }
+  .ttx-produit__grille { display: grid; gap: 24px; }
+  @media (min-width: 990px) {
+    .ttx-produit__grille { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 5vw, 80px); align-items: start; }
+    .ttx-produit__galerie { position: sticky; top: 24px; }
+  }
+  .ttx-produit__galerie { position: relative; min-width: 0; }
+  .ttx-produit__piste { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 10px; }
+  .ttx-produit__piste::-webkit-scrollbar { display: none; }
+  .ttx-produit__slide { flex: 0 0 100%; scroll-snap-align: start; aspect-ratio: 1 / 1; background: #f4f5f7; }
+  .ttx-produit__slide img, .ttx-produit__slide video { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .ttx-produit__vignettes { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; scrollbar-width: none; }
+  .ttx-produit__vignette { flex: 0 0 64px; height: 64px; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: #f4f5f7; cursor: pointer; font: 700 18px/1 var(--ttx-police); color: #7a828c; }
+  .ttx-produit__vignette img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ttx-produit__vignette.is-active { border-color: var(--ttx-navy); }
+  .ttx-produit__infos { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .ttx-produit__surtitre { align-self: center; margin: 0; padding: 4px 12px; border: 2px solid var(--ttx-texte); font: 800 clamp(15px, 1.4vw, 18px)/1.2 var(--ttx-police); letter-spacing: .02em; text-transform: uppercase; text-align: center; }
+  .ttx-produit__titre { margin: 0; font: 700 clamp(24px, 2.4vw, 32px)/1.2 var(--ttx-police); color: var(--ttx-texte); overflow-wrap: anywhere; }
+  .ttx-produit__soustitre { margin: -6px 0 0; font: 400 clamp(15px, 1.2vw, 17px)/1.5 var(--ttx-police); color: #3c4450; }
+  .ttx-produit__puce { display: flex; gap: 10px; align-items: flex-start; margin: 0; font: 500 clamp(15px, 1.2vw, 17px)/1.4 var(--ttx-police); }
+  .ttx-produit__puce + .ttx-produit__puce { margin-top: -6px; }
+  .ttx-produit__puce strong { color: var(--ttx-bleu); font-weight: 600; }
+  .ttx-produit__puce-ico { flex: 0 0 20px; margin-top: 1px; fill: var(--ttx-navy); }
+  .ttx-encart { display: flex; gap: 16px; align-items: center; padding: 14px 18px; background: #f4f5f7; border-radius: 10px; }
+  .ttx-encart__ico { flex: 0 0 64px; height: 64px; border-radius: 50%; background: var(--ttx-navy); display: grid; place-items: center; }
+  .ttx-encart__txt { display: flex; flex-direction: column; min-width: 0; }
+  .ttx-encart__titre { font: 900 clamp(20px, 2vw, 26px)/1.05 var(--ttx-police-titre); text-transform: uppercase; color: var(--ttx-texte); }
+  .ttx-encart__sous { font: 700 clamp(14px, 1.2vw, 16px)/1.25 var(--ttx-police); text-transform: uppercase; color: var(--ttx-bleu); }
+  .ttx-encart__petit { margin-top: 2px; font: 400 12px/1.35 var(--ttx-police); color: #3c4450; }
+  .ttx-avis-courts { border-top: 1px solid #e6e8ec; padding-top: 12px; }
+  .ttx-avis-courts__piste { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 16px; }
+  .ttx-avis-courts__piste > * { flex: 0 0 100%; scroll-snap-align: start; }
+  .ttx-accordeon { border-bottom: 1px solid #e6e8ec; }
+  .ttx-accordeon:first-of-type { border-top: 1px solid #e6e8ec; }
+  .ttx-accordeon__titre { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; font: 700 14px/1.3 var(--ttx-police); letter-spacing: .04em; text-transform: uppercase; }
+  .ttx-accordeon__titre::-webkit-details-marker { display: none; }
+  .ttx-accordeon__plus { position: relative; flex: 0 0 14px; height: 14px; }
+  .ttx-accordeon__plus::before, .ttx-accordeon__plus::after { content: ""; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; background: currentColor; transition: transform .2s; }
+  .ttx-accordeon__plus::after { transform: rotate(90deg); }
+  .ttx-accordeon[open] .ttx-accordeon__plus::after { transform: rotate(0); }
+  .ttx-accordeon__contenu { padding-bottom: 16px; font: 400 15px/1.55 var(--ttx-police); color: #2b313a; }
+  .ttx-accordeon__contenu p { margin: 0 0 10px; }
+  .ttx-collant { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: #fff; box-shadow: 0 -4px 16px rgba(0,0,0,.12); }
+  .ttx-collant[hidden] { display: none; }
+  .ttx-collant__txt { flex: 1; min-width: 0; font: 600 13px/1.3 var(--ttx-police); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ttx-collant__btn { flex: 0 0 auto; min-height: 48px; padding-inline: 18px; }
+  body.ttx-collant-actif { padding-bottom: 72px; }
+  @media (min-width: 990px) { .ttx-collant { display: none; } body.ttx-collant-actif { padding-bottom: 0; } }
+
+  .ttx-videos { position: relative; padding-block: clamp(24px, 4vw, 48px); }
+  .ttx-videos__piste { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .ttx-videos__piste::-webkit-scrollbar { display: none; }
+  .ttx-videos__carte { flex: 0 0 calc((100% - 10px) / 2); scroll-snap-align: start; position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 9 / 13; background: #f4f5f7; }
+  @media (min-width: 750px) { .ttx-videos__carte { flex-basis: calc((100% - 30px) / 4); } }
+  .ttx-videos__carte video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ttx-videos__carte .ttx-emplacement { height: 100%; aspect-ratio: auto; }
+  .ttx-videos__legende { position: absolute; left: 10px; bottom: 10px; margin: 0; color: #fff; font: 600 12px/1.2 var(--ttx-police); text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .ttx-videos__suiv { top: 55%; right: 4px; }
+
+  .ttx-avis-section { padding-block: clamp(32px, 5vw, 64px); }
+  .ttx-avis-section__surtitre { margin: 0 0 12px; font: 800 14px/1.2 var(--ttx-police); text-transform: uppercase; letter-spacing: .03em; }
+  .ttx-avis-section__titre { margin: 0 0 8px; text-align: center; font: 500 clamp(26px, 3vw, 40px)/1.15 var(--ttx-police); letter-spacing: -.01em; }
+  .ttx-avis-section__titre strong { font-weight: 800; }
+  .ttx-avis-section--cartes .ttx-avis-source { text-align: center; margin-bottom: 24px; }
+  .ttx-avis-section__piste { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px 2px 12px; }
+  .ttx-avis-section__piste::-webkit-scrollbar { display: none; }
+  .ttx-avis-section__piste > .ttx-avis { flex: 0 0 85%; scroll-snap-align: start; }
+  @media (min-width: 750px) {
+    .ttx-avis-section--cartes .ttx-avis-section__piste > .ttx-avis { flex-basis: calc((100% - 32px) / 3); }
+    .ttx-avis-section--bandeau .ttx-avis-section__piste > .ttx-avis { flex-basis: calc((100% - 32px) / 2.4); }
+  }
+  .ttx-avis-section__nav { display: flex; justify-content: center; gap: 12px; margin-top: 8px; }
+
+  .ttx-raisons { padding-block: clamp(32px, 5vw, 64px); }
+  .ttx-raisons__titre { margin: 10px 0 12px; font: 800 clamp(24px, 2.6vw, 34px)/1.2 var(--ttx-police-titre); max-width: 22ch; }
+  .ttx-raisons__intro { margin: 0 0 24px; font: 700 14px/1.5 var(--ttx-police); color: #2b313a; }
+  .ttx-raisons__liste { display: grid; gap: 32px; margin-bottom: 32px; }
+  .ttx-raisons__ligne { display: grid; gap: 16px; }
+  @media (min-width: 750px) {
+    .ttx-raisons__ligne { grid-template-columns: minmax(0, .75fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: center; }
+    .ttx-raisons__ligne--inverse .ttx-raisons__media { order: 2; }
+    .ttx-raisons__ligne--inverse { grid-template-columns: minmax(0, 1fr) minmax(0, .75fr); }
+  }
+  .ttx-raisons__media { aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 4px 4px 0 #c9d3e3, 0 0 0 1px #eef1f5; }
+  .ttx-raisons__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ttx-raisons__media .ttx-emplacement { height: 100%; }
+  .ttx-raisons__pastille { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 12px; padding: 8px 18px 8px 10px; border: 2px solid var(--ttx-navy); border-radius: 999px; font: 800 14px/1.25 var(--ttx-police-titre); text-transform: uppercase; color: var(--ttx-navy); }
+  .ttx-raisons__num { flex: 0 0 22px; height: 22px; border-radius: 50%; background: var(--ttx-navy); color: #fff; display: grid; place-items: center; font-size: 12px; }
+  .ttx-raisons__corps { font: 500 15px/1.55 var(--ttx-police); color: #2b313a; max-width: 46ch; }
+  .ttx-raisons__corps p { margin: 0; }
+
+  .ttx-probleme { background: var(--ttx-navy); color: #fff; padding-block: clamp(40px, 6vw, 72px); }
+  .ttx-probleme__etiquette { margin: 0 0 10px; text-align: center; font: 700 11px/1.2 var(--ttx-police); letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+  .ttx-probleme__titre { margin: 0 auto 12px; max-width: 24ch; text-align: center; font: 800 clamp(24px, 3vw, 36px)/1.2 var(--ttx-police-titre); text-transform: uppercase; }
+  .ttx-probleme__intro { margin: 0 auto 32px; max-width: 52ch; text-align: center; font: 500 14px/1.55 var(--ttx-police); opacity: .85; }
+  .ttx-probleme__grille { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .ttx-probleme__carte { background: rgba(255,255,255,.06); border-radius: 12px; padding: 12px 12px 20px; }
+  .ttx-probleme__media { position: relative; aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden; margin-bottom: 14px; }
+  .ttx-probleme__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ttx-probleme__num { position: absolute; left: 8px; top: 8px; z-index: 1; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: var(--ttx-navy); display: grid; place-items: center; font: 800 13px/1 var(--ttx-police); }
+  .ttx-probleme__media .ttx-emplacement { height: 100%; }
+  .ttx-probleme__num--seul { position: static; margin-bottom: 12px; }
+  .ttx-probleme__ctitre { margin: 0 0 8px; font: 700 16px/1.3 var(--ttx-police); }
+  .ttx-probleme__ctexte { font: 400 13px/1.6 var(--ttx-police); opacity: .9; }
+  .ttx-probleme__ctexte p { margin: 0; }
+
+  .ttx-rappel { padding-block: clamp(24px, 4vw, 48px); }
+  .ttx-rappel__col { max-width: 460px; margin-inline: auto; display: flex; flex-direction: column; gap: 14px; }
+  .ttx-rappel__image { aspect-ratio: 1 / 1; border-radius: 10px; overflow: hidden; background: #f4f5f7; }
+  .ttx-rappel__image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  .ttx-faq { padding-block: clamp(32px, 5vw, 56px); }
+  .ttx-faq__titre { margin: 0 0 24px; text-align: center; font: 800 clamp(26px, 3vw, 36px)/1.2 var(--ttx-police); }
+  .ttx-faq__liste { max-width: 700px; margin-inline: auto; }
+  .ttx-faq__item { border-bottom: 1px solid #e6e8ec; }
+  .ttx-faq__q { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; font: 700 14px/1.35 var(--ttx-police); }
+  .ttx-faq__q::-webkit-details-marker { display: none; }
+  .ttx-faq__chevron { flex: 0 0 8px; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-3px); transition: transform .2s; }
+  .ttx-faq__item[open] .ttx-faq__chevron { transform: rotate(-135deg); }
+  .ttx-faq__r { padding-bottom: 16px; font: 400 14px/1.6 var(--ttx-police); color: #2b313a; }
+  .ttx-faq__r p { margin: 0 0 8px; }
+
+  .ttx-reass { padding-block: clamp(24px, 4vw, 48px); }
+  .ttx-reass__grille { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .ttx-reass__carte { text-align: center; padding: 20px 14px; border-radius: 12px; background: #fff; box-shadow: 0 2px 14px rgba(12,51,88,.08); }
+  .ttx-reass__ico { width: 52px; height: 52px; margin: 0 auto 12px; border-radius: 50%; background: var(--ttx-navy); display: grid; place-items: center; }
+  .ttx-reass__titre { margin: 0 0 6px; font: 700 clamp(14px, 1.3vw, 17px)/1.3 var(--ttx-police); }
+  .ttx-reass__texte { font: 400 12px/1.5 var(--ttx-police); color: #3c4450; }
+  .ttx-reass__texte p { margin: 0; }
+</style></head><body>
+<header class="apercu-entete"><span>[En-tête du thème de la boutique, non modifié]</span><span>Panier</span></header>
+<section id="shopify-section-annonce" class="shopify-section section-ttx-annonce"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+
+<div class="ttx-annonce" role="region" aria-label="Annonces">
+  <div class="ttx-annonce__piste"><div class="ttx-annonce__groupe"><span class="ttx-annonce__msg" >• SANS PFAS — SANS REVÊTEMENT ANTIADHÉSIF •</span><span class="ttx-annonce__msg" >• LOT DE 2 : ÉCONOMISEZ 19,99 € •</span></div><div class="ttx-annonce__groupe" aria-hidden="true"><span class="ttx-annonce__msg" >• SANS PFAS — SANS REVÊTEMENT ANTIADHÉSIF •</span><span class="ttx-annonce__msg" >• LOT DE 2 : ÉCONOMISEZ 19,99 € •</span></div><div class="ttx-annonce__groupe" aria-hidden="true"><span class="ttx-annonce__msg" >• SANS PFAS — SANS REVÊTEMENT ANTIADHÉSIF •</span><span class="ttx-annonce__msg" >• LOT DE 2 : ÉCONOMISEZ 19,99 € •</span></div><div class="ttx-annonce__groupe" aria-hidden="true"><span class="ttx-annonce__msg" >• SANS PFAS — SANS REVÊTEMENT ANTIADHÉSIF •</span><span class="ttx-annonce__msg" >• LOT DE 2 : ÉCONOMISEZ 19,99 € •</span></div></div>
+</div>
+
+
+
+
+</section><section id="shopify-section-produit" class="shopify-section section-ttx-produit"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+<div class="ttx-produit ttx-wrap">
+  <div class="ttx-produit__grille">
+
+    <div class="ttx-produit__galerie" data-ttx-carousel>
+      <div class="ttx-produit__piste" data-ttx-track><div class="ttx-produit__slide"><img src="img/02-packshot-fond-blanc.webp" width="700" height="700" fetchpriority="high" sizes="(min-width: 990px) 560px, 100vw" alt=""></div><div class="ttx-produit__slide"><img src="img/04-detail-texture.webp" width="700" height="700" loading="lazy" sizes="(min-width: 990px) 560px, 100vw" alt=""></div><div class="ttx-produit__slide"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Image 1 : packshot + 1 à 4 badges vrais (Sans PFAS, Sans revêtement, Titane · Alu · Inox, 30 jours)</small></span>
+</div>
+</div><div class="ttx-produit__slide"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Comparatif : poêle à revêtement rayée / surface titane (sans bouton ni prix)</small></span>
+</div>
+</div><div class="ttx-produit__slide"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Manche : fixation réelle (fixe ou amovible, à vérifier)</small></span>
+</div>
+</div><div class="ttx-produit__slide"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Coupe 3 couches : titane / aluminium / inox</small></span>
+</div>
+</div><div class="ttx-produit__slide"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Œuf au plat dans la vraie poêle (sans bouton ni prix)</small></span>
+</div>
+</div><div class="ttx-produit__slide"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Lot de 2 poêles (sans prix)</small></span>
+</div>
+</div></div>
+      <button type="button" class="ttx-fleche ttx-fleche--prec" data-ttx-prev aria-label="Image précédente">‹</button>
+      <button type="button" class="ttx-fleche ttx-fleche--suiv" data-ttx-next aria-label="Image suivante">›</button>
+      <div class="ttx-produit__vignettes"><button type="button" class="ttx-produit__vignette is-active" data-ttx-goto="0" aria-label="Voir l'image 1">
+            <img src="img/02-packshot-fond-blanc.webp" width="80" height="80" loading="lazy" alt="">
+          </button><button type="button" class="ttx-produit__vignette" data-ttx-goto="1" aria-label="Voir l'image 2">
+            <img src="img/04-detail-texture.webp" width="80" height="80" loading="lazy" alt="">
+          </button><button type="button" class="ttx-produit__vignette ttx-produit__vignette--vide" data-ttx-goto="2" aria-label="Emplacement 3">?</button><button type="button" class="ttx-produit__vignette ttx-produit__vignette--vide" data-ttx-goto="3" aria-label="Emplacement 4">?</button><button type="button" class="ttx-produit__vignette ttx-produit__vignette--vide" data-ttx-goto="4" aria-label="Emplacement 5">?</button><button type="button" class="ttx-produit__vignette ttx-produit__vignette--vide" data-ttx-goto="5" aria-label="Emplacement 6">?</button><button type="button" class="ttx-produit__vignette ttx-produit__vignette--vide" data-ttx-goto="6" aria-label="Emplacement 7">?</button><button type="button" class="ttx-produit__vignette ttx-produit__vignette--vide" data-ttx-goto="7" aria-label="Emplacement 8">?</button></div>
+    </div>
+
+    <div class="ttx-produit__infos" id="ttx-achat">
+      <form id="ttx-form-produit" method="post" action="/cart/add" accept-charset="UTF-8" class="ttx-produit__form">
+        <input type="hidden" name="form_type" value="product">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="quantity" value="1"></form><p class="ttx-produit__surtitre" >SANS PFAS · SANS REVÊTEMENT</p><h1 class="ttx-produit__titre" >Poêle Surface Titane Pour Une Cuisine Sans PFAS</h1><p class="ttx-produit__soustitre" >La surface en titane pour cuisiner sans revêtement antiadhésif au quotidien, pour toute votre famille.</p><p class="ttx-produit__puce" >
+              <svg class="ttx-produit__puce-ico" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-6.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Relief martelé <strong>sans revêtement antiadhésif</strong></span>
+            </p><p class="ttx-produit__puce" >
+              <svg class="ttx-produit__puce-ico" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-6.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Surface de cuisson <strong>sans PFAS</strong></span>
+            </p><p class="ttx-produit__puce" >
+              <svg class="ttx-produit__puce-ico" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-6.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Fabriquée en <strong>titane, aluminium et inox</strong></span>
+            </p><p class="ttx-produit__puce" >
+              <svg class="ttx-produit__puce-ico" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-6.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Garantie <strong>3 mois</strong> + garantie légale de 2 ans</span>
+            </p><div class="ttx-encart" >
+              <span class="ttx-encart__ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M8 12l3 3 5-5.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="ttx-encart__txt">
+                <span class="ttx-encart__titre">30 JOURS POUR CHANGER D&#39;AVIS</span>
+                <span class="ttx-encart__sous">REMBOURSÉ</span><span class="ttx-encart__petit">Conditions dans notre <a href="/policies/refund-policy">politique de retour</a>.</span></span>
+            </div><p class="ttx-ligne-titre" ><span>CHOISISSEZ VOTRE OFFRE</span></p><label class="ttx-offre" >
+  <input class="ttx-offre__radio" type="radio" name="id" value="101" form="ttx-form-produit"
+    checked>
+  <span class="ttx-offre__coche" aria-hidden="true"></span><span class="ttx-offre__img"><img src="img/02-packshot-fond-blanc.webp" width="60" height="60" loading="lazy" alt=""></span>
+  <span class="ttx-offre__txt">
+    <span class="ttx-offre__titre">1x Poêle Titanixxx</span></span>
+  <span class="ttx-offre__prix">59,99 €</span>
+</label><label class="ttx-offre" >
+  <input class="ttx-offre__radio" type="radio" name="id" value="102" form="ttx-form-produit"
+    >
+  <span class="ttx-offre__coche" aria-hidden="true"></span><span class="ttx-offre__badge">-16 %</span><span class="ttx-offre__img"><img src="img/02-packshot-fond-blanc.webp" width="60" height="60" loading="lazy" alt=""></span>
+  <span class="ttx-offre__txt">
+    <span class="ttx-offre__titre">Set 2 Poêles Titanixxx</span><span class="ttx-offre__eco">Économisez 19,99 €</span></span>
+  <span class="ttx-offre__prix">99,99 €</span>
+</label><div class="ttx-badges" ><span class="ttx-badge ttx-badge--vert">30 jours pour changer d&#39;avis</span><span class="ttx-badge ttx-badge--bleu">Sans PFAS</span></div><button type="submit" form="ttx-form-produit" name="add" class="ttx-cta ttx-cta--large" 
+              >➜ AJOUTER AU PANIER</button><ul class="ttx-paiements"  aria-label="Moyens de paiement"><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="visa"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">visa</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="master"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">master</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="american_express"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">americ</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="paypal"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">paypal</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="apple_pay"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">apple_</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="google_pay"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">google</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="shopify_pay"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">shopif</text></svg></li></ul><div class="ttx-avis-courts" data-ttx-carousel>
+                <div class="ttx-avis-source">
+  <p class="ttx-avis-source__intitule">Avis clients recueillis par notre fabricant sur ce modèle de poêle</p>
+  <p class="ttx-avis-source__collecte">Comment ces avis sont collectés : [À COMPLÉTER par l'utilisateur]</p>
+</div>
+
+                <div class="ttx-avis-courts__piste" data-ttx-track><figure class="ttx-avis ttx-avis--court" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><blockquote class="ttx-avis__texte">Premier poulet dans ma nouvelle poêle. J&#39;avoue que j&#39;avais un peu peur que ça accroche sans revêtement mais pas du tout. Même le nettoyage n&#39;a pris que deux minutes. Ravie de mon achat.</blockquote>
+    <figcaption class="ttx-avis__nom">Catherine M.</figcaption>
+  </div>
+</figure>
+</div>
+              </div><details class="ttx-accordeon" >
+              <summary class="ttx-accordeon__titre">RELIEF MARTELÉ SANS REVÊTEMENT<span class="ttx-accordeon__plus" aria-hidden="true"></span></summary>
+              <div class="ttx-accordeon__contenu"><p>La surface de cuisson Titanixxx est en titane martelé, sans le moindre revêtement antiadhésif. Son relief en écailles est travaillé directement dans le métal.</p><p>✓ <strong>Aucun revêtement antiadhésif</strong> — rien n'est posé sur le titane</p><p>✓ <strong>Relief martelé</strong> — sur toute la surface de cuisson</p><p>✓ <strong>Sans PFAS</strong> — confirmé par un rapport de laboratoire</p></div>
+            </details><details class="ttx-accordeon" >
+              <summary class="ttx-accordeon__titre">SANS PFAS NI REVÊTEMENT<span class="ttx-accordeon__plus" aria-hidden="true"></span></summary>
+              <div class="ttx-accordeon__contenu"><p>La plupart des poêles du commerce ont un revêtement antiadhésif. La poêle Titanixxx n'en a aucun : vous cuisinez directement sur le titane.</p><p>✓ <strong>Sans PFAS</strong> — confirmé par un rapport de laboratoire</p><p>✓ <strong>Sans revêtement antiadhésif</strong> — une surface en titane nu</p><p>✓ <strong>3 couches</strong> — titane, aluminium, inox</p></div>
+            </details><details class="ttx-accordeon" >
+              <summary class="ttx-accordeon__titre">TITANE, ALUMINIUM ET INOX<span class="ttx-accordeon__plus" aria-hidden="true"></span></summary>
+              <div class="ttx-accordeon__contenu"><p>Une poêle en trois couches, chacune à sa place.</p><p>✓ <strong>Surface de cuisson en titane</strong> — martelée, sans revêtement</p><p>✓ <strong>Noyau en aluminium</strong> — au cœur de la poêle</p><p>✓ <strong>Base en inox</strong> — sous la poêle</p></div>
+            </details><details class="ttx-accordeon" >
+              <summary class="ttx-accordeon__titre">GARANTIE &amp; LIVRAISON<span class="ttx-accordeon__plus" aria-hidden="true"></span></summary>
+              <div class="ttx-accordeon__contenu"><p>✓ <strong>Garantie commerciale de 3 mois</strong> — en plus de la garantie légale de conformité de 2 ans</p><p>✓ <strong>30 jours pour changer d'avis</strong> — remboursé, conditions dans notre <a href="/policies/refund-policy">politique de retour</a></p><p>✓ <strong>Suivi de commande</strong> — numéro de suivi envoyé par e-mail dès l'expédition</p><p>✓ <strong>Une question ?</strong> — écrivez-nous via notre formulaire de contact</p></div>
+            </details></div>
+  </div><div class="ttx-collant" data-ttx-collant hidden>
+      <span class="ttx-collant__txt">À partir de <strong>59,99 €</strong></span>
+      <button type="submit" form="ttx-form-produit" name="add" class="ttx-cta ttx-collant__btn" >➜ AJOUTER AU PANIER</button>
+    </div></div>
+
+
+
+
+</section><section id="shopify-section-videos" class="shopify-section section-ttx-videos"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+
+<div class="ttx-videos ttx-wrap" data-ttx-carousel><p class="ttx-surtitre-bleu">TITANIXXX EN ACTION</p><div class="ttx-videos__piste" data-ttx-track><div class="ttx-videos__carte" ><div class="ttx-emplacement" style="--ttx-ratio: 9 / 13" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Vidéo verticale : œuf au plat dans la vraie poêle</small></span>
+</div>
+</div><div class="ttx-videos__carte" ><div class="ttx-emplacement" style="--ttx-ratio: 9 / 13" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Vidéo verticale : steak saisi dans la vraie poêle</small></span>
+</div>
+</div><div class="ttx-videos__carte" ><div class="ttx-emplacement" style="--ttx-ratio: 9 / 13" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Vidéo verticale : nettoyage à l&#39;éponge</small></span>
+</div>
+</div><div class="ttx-videos__carte" ><div class="ttx-emplacement" style="--ttx-ratio: 9 / 13" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Vidéo verticale : gros plan relief martelé</small></span>
+</div>
+</div></div>
+  <button type="button" class="ttx-fleche ttx-fleche--suiv ttx-videos__suiv" data-ttx-next aria-label="Vidéo suivante">›</button>
+</div>
+
+
+
+
+</section><section id="shopify-section-avis_cartes" class="shopify-section section-ttx-avis"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+
+<div class="ttx-avis-section ttx-avis-section--cartes ttx-wrap" data-ttx-carousel><h2 class="ttx-avis-section__titre">Ils ont retrouvé le plaisir <strong>de cuisiner sans revêtement</strong></h2><div class="ttx-avis-source">
+  <p class="ttx-avis-source__intitule">Avis clients recueillis par notre fabricant sur ce modèle de poêle</p>
+  <p class="ttx-avis-source__collecte">Comment ces avis sont collectés : [À COMPLÉTER par l'utilisateur]</p>
+</div>
+
+  <div class="ttx-avis-section__piste" data-ttx-track><figure class="ttx-avis ttx-avis--cartes" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><blockquote class="ttx-avis__texte">J&#39;ai filmé ma première recette avec cette poêle. J&#39;en pouvais plus de cuisiner avec un truc qui s&#39;écaillait. Maintenant je peux cuisiner sereine et rien n&#39;accroche. Je la recommande à 100% !!</blockquote>
+    <figcaption class="ttx-avis__nom">Véronique S.</figcaption>
+  </div>
+</figure>
+<figure class="ttx-avis ttx-avis--cartes" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><blockquote class="ttx-avis__texte">Rien n&#39;accroche ! Je ne pensais pas que c&#39;était possible sans revêtement et pourtant même les œufs se décollent sans le moindre effort. Agréablement surpris.</blockquote>
+    <figcaption class="ttx-avis__nom">Didier B.</figcaption>
+  </div>
+</figure>
+<figure class="ttx-avis ttx-avis--cartes" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><blockquote class="ttx-avis__texte">C&#39;est moi qui cuisine à la maison depuis que je suis à la retraite et franchement j&#39;aurais dû l&#39;avoir bien avant. Elle chauffe vite et rien n&#39;accroche. On n&#39;utilise plus aucune autre poêle chez nous.</blockquote>
+    <figcaption class="ttx-avis__nom">Gérard P.</figcaption>
+  </div>
+</figure>
+<figure class="ttx-avis ttx-avis--cartes" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><blockquote class="ttx-avis__texte">Je cuisine depuis plus de trente ans et j&#39;ai toujours travaillé avec de l&#39;inox. Quand j&#39;ai vu qu&#39;elle saisissait mieux que mes vieilles poêles de métier j&#39;étais sidéré. Le titane, c&#39;est du sérieux.</blockquote>
+    <figcaption class="ttx-avis__nom">Jean-Marc D.</figcaption>
+  </div>
+</figure>
+<figure class="ttx-avis ttx-avis--cartes" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><blockquote class="ttx-avis__texte">Ma spécialité c&#39;est les boulettes de viande. Avec mes anciennes poêles ça collait et je devais toujours gratter le fond. Sur cette poêle ça glisse tout seul et la cuisson est toujours parfaite.</blockquote>
+    <figcaption class="ttx-avis__nom">Éléna R.</figcaption>
+  </div>
+</figure>
+</div>
+  <div class="ttx-avis-section__nav">
+    <button type="button" class="ttx-rond" data-ttx-prev aria-label="Avis précédent">‹</button>
+    <button type="button" class="ttx-rond" data-ttx-next aria-label="Avis suivant">›</button>
+  </div>
+</div>
+
+
+
+
+</section><section id="shopify-section-raisons" class="shopify-section section-ttx-raisons"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+
+<div class="ttx-raisons ttx-wrap"><p class="ttx-etiquette">5 RAISONS</p><h2 class="ttx-raisons__titre">Pourquoi choisir Titanixxx pour votre prochaine poêle</h2><p class="ttx-raisons__intro">La poêle à surface titane, sans revêtement et sans PFAS.</p><div class="ttx-raisons__liste"><div class="ttx-raisons__ligne" >
+        <div class="ttx-raisons__media"><img src="img/04-detail-texture.webp" width="500" height="500" loading="lazy" sizes="(min-width: 750px) 40vw, 100vw" alt="UNE SURFACE EN TITANE MARTELÉ"></div>
+        <div class="ttx-raisons__texte">
+          <p class="ttx-raisons__pastille"><span class="ttx-raisons__num">1</span>UNE SURFACE EN TITANE MARTELÉ</p>
+          <div class="ttx-raisons__corps"><p>La surface de cuisson est en <strong>titane</strong>, avec un <strong>relief martelé</strong> en écailles travaillé dans le métal. Aucun revêtement antiadhésif n'est posé dessus.</p></div>
+        </div>
+      </div><div class="ttx-raisons__ligne ttx-raisons__ligne--inverse" >
+        <div class="ttx-raisons__media"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Vraie poêle sur le feu, cuisson en cours, fond clair</small></span>
+</div>
+</div>
+        <div class="ttx-raisons__texte">
+          <p class="ttx-raisons__pastille"><span class="ttx-raisons__num">2</span>CUISINEZ SANS PFAS NI REVÊTEMENT</p>
+          <div class="ttx-raisons__corps"><p>Aucun <strong>revêtement antiadhésif</strong> sur la surface de cuisson : vous cuisinez directement sur le <strong>titane</strong>. L'absence de PFAS est <strong>confirmée par un rapport de laboratoire</strong>.</p></div>
+        </div>
+      </div><div class="ttx-raisons__ligne" >
+        <div class="ttx-raisons__media"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Coupe 3 couches titane / aluminium / inox (infographie, contain)</small></span>
+</div>
+</div>
+        <div class="ttx-raisons__texte">
+          <p class="ttx-raisons__pastille"><span class="ttx-raisons__num">3</span>TITANE, ALUMINIUM ET INOX</p>
+          <div class="ttx-raisons__corps"><p>Trois couches : une <strong>surface de cuisson en titane</strong>, un <strong>noyau en aluminium</strong> et une <strong>base en inox</strong>.</p></div>
+        </div>
+      </div><div class="ttx-raisons__ligne ttx-raisons__ligne--inverse" >
+        <div class="ttx-raisons__media"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Vraie poêle dans une cuisine de particulier, lumière naturelle</small></span>
+</div>
+</div>
+        <div class="ttx-raisons__texte">
+          <p class="ttx-raisons__pastille"><span class="ttx-raisons__num">4</span>30 JOURS POUR L&#39;ESSAYER CHEZ VOUS</p>
+          <div class="ttx-raisons__corps"><p>Vous la testez dans votre cuisine. Si elle ne vous convient pas, vous avez <strong>30 jours pour changer d'avis</strong> et être <strong>remboursé</strong>. Conditions dans notre <a href="/policies/refund-policy">politique de retour</a>.</p></div>
+        </div>
+      </div><div class="ttx-raisons__ligne" >
+        <div class="ttx-raisons__media"><div class="ttx-emplacement" style="--ttx-ratio: 1 / 1" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Vraie poêle et son colis réel (boîte réelle ou sans boîte)</small></span>
+</div>
+</div>
+        <div class="ttx-raisons__texte">
+          <p class="ttx-raisons__pastille"><span class="ttx-raisons__num">5</span>GARANTIE 3 MOIS + GARANTIE LÉGALE 2 ANS</p>
+          <div class="ttx-raisons__corps"><p>Votre poêle est couverte par notre <strong>garantie commerciale de 3 mois</strong>, en plus de la <strong>garantie légale de conformité de 2 ans</strong> qui s'applique à tout achat en Europe.</p></div>
+        </div>
+      </div></div><div class="ttx-centre"><a class="ttx-cta" href="#ttx-achat">JE COMMANDE MA POÊLE EN TITANE ➜</a></div></div>
+
+
+
+
+</section><section id="shopify-section-probleme" class="shopify-section section-ttx-probleme"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+
+<div class="ttx-probleme">
+  <div class="ttx-wrap"><p class="ttx-probleme__etiquette">LE PROBLÈME</p><h2 class="ttx-probleme__titre">Les poêles à revêtement finissent par s'user</h2><p class="ttx-probleme__intro">Derrière les belles promesses, le revêtement antiadhésif se raye, s&#39;use, et la poêle se rachète.</p><div class="ttx-probleme__grille"><div class="ttx-probleme__carte" ><div class="ttx-probleme__media">
+              <span class="ttx-probleme__num">1</span><div class="ttx-emplacement" style="--ttx-ratio: 4 / 3" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Aliments collés dans une poêle à revêtement usée (sans marque)</small></span>
+</div>
+</div><p class="ttx-probleme__ctitre">Tout finit par coller</p>
+          <div class="ttx-probleme__ctexte"><p>Le revêtement s'use à chaque cuisson. Les aliments accrochent, il faut toujours plus de gras, <strong>et le plat est quand même raté.</strong></p></div>
+        </div><div class="ttx-probleme__carte" ><div class="ttx-probleme__media">
+              <span class="ttx-probleme__num">2</span><div class="ttx-emplacement" style="--ttx-ratio: 4 / 3" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Gros plan d&#39;un revêtement antiadhésif rayé (sans marque)</small></span>
+</div>
+</div><p class="ttx-probleme__ctitre">Un revêtement qui se raye</p>
+          <div class="ttx-probleme__ctexte"><p>À force de spatules et de coups d'éponge, le revêtement antiadhésif se raye. <strong>C'est pour ça que beaucoup cherchent une poêle sans revêtement.</strong></p></div>
+        </div><div class="ttx-probleme__carte" ><div class="ttx-probleme__media">
+              <span class="ttx-probleme__num">3</span><div class="ttx-emplacement" style="--ttx-ratio: 4 / 3" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir<br><small>Vieilles poêles usées empilées (sans marque)</small></span>
+</div>
+</div><p class="ttx-probleme__ctitre">À racheter régulièrement</p>
+          <div class="ttx-probleme__ctexte"><p>Le revêtement s'use, la poêle part à la poubelle. <strong>Pas chères à l'achat, elles se rachètent encore et encore.</strong></p></div>
+        </div></div>
+  </div>
+</div>
+
+
+
+
+</section><section id="shopify-section-avis_bandeau" class="shopify-section section-ttx-avis"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+
+<div class="ttx-avis-section ttx-avis-section--bandeau ttx-wrap" data-ttx-carousel><p class="ttx-avis-section__surtitre">AVIS CLIENTS</p><div class="ttx-avis-source">
+  <p class="ttx-avis-source__intitule">Avis clients recueillis par notre fabricant sur ce modèle de poêle</p>
+  <p class="ttx-avis-source__collecte">Comment ces avis sont collectés : [À COMPLÉTER par l'utilisateur]</p>
+</div>
+
+  <div class="ttx-avis-section__piste" data-ttx-track><figure class="ttx-avis ttx-avis--bandeau" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><p class="ttx-avis__titre">Je cuisine plus sereinement</p><blockquote class="ttx-avis__texte">Je ne suis pas du genre à me prendre la tête, mais là ça m&#39;a marqué. Avant, je cuisinais sans vraiment réfléchir à la surface… maintenant je fais attention. C&#39;est devenu automatique, et honnêtement ça change tout dans ma façon de voir la cuisine. Mille merci!!</blockquote>
+    <figcaption class="ttx-avis__nom">Nathalie P.</figcaption>
+  </div>
+</figure>
+<figure class="ttx-avis ttx-avis--bandeau" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><p class="ttx-avis__titre">Moins de prise de tête</p><blockquote class="ttx-avis__texte">Je cuisine vite fait en rentrant du taf, et ça me saoulait que ça colle ou que ça brûle. Là c&#39;est propre, rapide, efficace. J&#39;ai gagné du temps et moins de prise de tête.</blockquote>
+    <figcaption class="ttx-avis__nom">Sabrina T.</figcaption>
+  </div>
+</figure>
+<figure class="ttx-avis ttx-avis--bandeau" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><p class="ttx-avis__titre">Simple, rapide, sans stress.</p><blockquote class="ttx-avis__texte">Honnêtement, ça m&#39;a réconcilié avec la cuisine. C&#39;est facile à utiliser, ça ne colle presque pas, et je n&#39;ai pas besoin de réfléchir à chaque geste.</blockquote>
+    <figcaption class="ttx-avis__nom">Camille F.</figcaption>
+  </div>
+</figure>
+<figure class="ttx-avis ttx-avis--bandeau" ><div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note 5 sur 5"><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span><span class="ttx-avis__etoile">★</span></div><p class="ttx-avis__titre">On sent la différence</p><blockquote class="ttx-avis__texte">J&#39;ai testé pas mal de poêles, et celle-ci est vraiment différente. La cuisson est plus régulière, plus propre, et surtout je sens mieux la maîtrise. Rien à voir avec les poêles revêtues.</blockquote>
+    <figcaption class="ttx-avis__nom">Elodie J.</figcaption>
+  </div>
+</figure>
+</div>
+  <div class="ttx-avis-section__nav">
+    <button type="button" class="ttx-rond" data-ttx-prev aria-label="Avis précédent">‹</button>
+    <button type="button" class="ttx-rond" data-ttx-next aria-label="Avis suivant">›</button>
+  </div>
+</div>
+
+
+
+
+</section><section id="shopify-section-rappel" class="shopify-section section-ttx-rappel"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+<div class="ttx-rappel ttx-wrap">
+  <div class="ttx-rappel__col"><form id="ttx-form-rappel" method="post" action="/cart/add" accept-charset="UTF-8">
+      <input type="hidden" name="form_type" value="product">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="quantity" value="1"></form><p class="ttx-ligne-titre"><span>CHOISISSEZ VOTRE OFFRE</span></p><label class="ttx-offre" >
+  <input class="ttx-offre__radio" type="radio" name="id" value="101" form="ttx-form-rappel"
+    checked>
+  <span class="ttx-offre__coche" aria-hidden="true"></span><span class="ttx-offre__img"><img src="img/02-packshot-fond-blanc.webp" width="60" height="60" loading="lazy" alt=""></span>
+  <span class="ttx-offre__txt">
+    <span class="ttx-offre__titre">1x Poêle Titanixxx</span></span>
+  <span class="ttx-offre__prix">59,99 €</span>
+</label><label class="ttx-offre" >
+  <input class="ttx-offre__radio" type="radio" name="id" value="102" form="ttx-form-rappel"
+    >
+  <span class="ttx-offre__coche" aria-hidden="true"></span><span class="ttx-offre__badge">-16 %</span><span class="ttx-offre__img"><img src="img/02-packshot-fond-blanc.webp" width="60" height="60" loading="lazy" alt=""></span>
+  <span class="ttx-offre__txt">
+    <span class="ttx-offre__titre">Set 2 Poêles Titanixxx</span><span class="ttx-offre__eco">Économisez 19,99 €</span></span>
+  <span class="ttx-offre__prix">99,99 €</span>
+</label><div class="ttx-badges"><span class="ttx-badge ttx-badge--vert">30 jours pour changer d&#39;avis</span><span class="ttx-badge ttx-badge--bleu">Sans PFAS</span></div><button type="submit" form="ttx-form-rappel" name="add" class="ttx-cta ttx-cta--large" >➜ AJOUTER AU PANIER</button>
+    <ul class="ttx-paiements" aria-label="Moyens de paiement"><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="visa"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">visa</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="master"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">master</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="american_express"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">americ</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="paypal"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">paypal</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="apple_pay"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">apple_</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="google_pay"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">google</text></svg></li><li><svg class="ttx-paiements__ico" viewBox="0 0 38 24" role="img" aria-label="shopify_pay"><rect width="38" height="24" rx="3" fill="#eef1f5" stroke="#cfd5dd"/><text x="19" y="15" font-size="7" text-anchor="middle" fill="#46546a" font-family="sans-serif">shopif</text></svg></li></ul>
+  </div>
+</div>
+
+
+
+
+</section><section id="shopify-section-faq" class="shopify-section section-ttx-faq"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+
+<div class="ttx-faq ttx-wrap">
+  <h2 class="ttx-faq__titre">FAQ – TITANIXXX</h2>
+  <div class="ttx-faq__liste"><details class="ttx-faq__item" >
+        <summary class="ttx-faq__q">Pourquoi le titane et pas une poêle antiadhésive classique ?<span class="ttx-faq__chevron" aria-hidden="true"></span></summary>
+        <div class="ttx-faq__r"><p>Parce qu'elle n'a <strong>aucun revêtement antiadhésif</strong>. Vous cuisinez directement sur une surface en titane martelé, posée sur un noyau en aluminium et une base en inox. Et elle est <strong>sans PFAS</strong> : c'est confirmé par un rapport de laboratoire.</p></div>
+      </details><details class="ttx-faq__item" >
+        <summary class="ttx-faq__q">De quoi est faite la poêle ?<span class="ttx-faq__chevron" aria-hidden="true"></span></summary>
+        <div class="ttx-faq__r"><p>De trois couches : une <strong>surface de cuisson en titane</strong> martelé, un <strong>noyau en aluminium</strong> et une <strong>base en inox</strong>. Sans revêtement antiadhésif.</p></div>
+      </details><details class="ttx-faq__item" >
+        <summary class="ttx-faq__q">Quelle est la garantie ?<span class="ttx-faq__chevron" aria-hidden="true"></span></summary>
+        <div class="ttx-faq__r"><p>Une <strong>garantie commerciale de 3 mois</strong>, en plus de la <strong>garantie légale de conformité de 2 ans</strong>. Si un défaut apparaît, écrivez-nous via notre formulaire de contact.</p></div>
+      </details><details class="ttx-faq__item" >
+        <summary class="ttx-faq__q">Elle contient vraiment zéro PFAS ?<span class="ttx-faq__chevron" aria-hidden="true"></span></summary>
+        <div class="ttx-faq__r"><p>Zéro PFAS : c'est <strong>confirmé par un rapport de laboratoire</strong>. Aucun revêtement antiadhésif sur la surface de cuisson.</p></div>
+      </details><details class="ttx-faq__item" >
+        <summary class="ttx-faq__q">Puis-je me faire rembourser ?<span class="ttx-faq__chevron" aria-hidden="true"></span></summary>
+        <div class="ttx-faq__r"><p>Oui. Vous avez <strong>30 jours pour changer d'avis</strong> et être remboursé. Les conditions sont détaillées dans notre <a href="/policies/refund-policy">politique de retour</a>.</p></div>
+      </details><details class="ttx-faq__item" >
+        <summary class="ttx-faq__q">Quels sont les délais de livraison ?<span class="ttx-faq__chevron" aria-hidden="true"></span></summary>
+        <div class="ttx-faq__r"><p>Les délais varient selon la période et le stock, mais la commande est traitée rapidement après validation. Une fois expédiée, vous recevez une confirmation avec les informations de suivi.</p></div>
+      </details><details class="ttx-faq__item" >
+        <summary class="ttx-faq__q">Comment suivre ma commande ?<span class="ttx-faq__chevron" aria-hidden="true"></span></summary>
+        <div class="ttx-faq__r"><p>Dès l'expédition, vous recevez un e-mail avec votre <strong>numéro de suivi</strong>.</p></div>
+      </details></div>
+</div>
+
+
+
+
+</section><section id="shopify-section-reassurance" class="shopify-section section-ttx-reassurance"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+<link rel="stylesheet" href="../theme/assets/ttx-base.css">
+<script src="../theme/assets/ttx-base.js" defer></script>
+
+<div class="ttx-reass ttx-wrap">
+  <div class="ttx-reass__grille"><div class="ttx-reass__carte" >
+        <span class="ttx-reass__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p class="ttx-reass__titre">Remboursé sous 30 jours</p>
+        <div class="ttx-reass__texte"><p>30 jours pour changer d'avis.</p></div>
+      </div><div class="ttx-reass__carte" >
+        <span class="ttx-reass__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v5H4zM17 14h3v5h-3z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <p class="ttx-reass__titre">Service client</p>
+        <div class="ttx-reass__texte"><p>Pour toute demande, écrivez-nous via notre <a href="/pages/contact">formulaire de contact</a>.</p></div>
+      </div><div class="ttx-reass__carte" >
+        <span class="ttx-reass__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="12" r="8.5" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M8 12.5l2.7 2.7L16 9.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p class="ttx-reass__titre">Garantie 3 mois</p>
+        <div class="ttx-reass__texte"><p>En plus de la garantie légale de 2 ans.</p></div>
+      </div><div class="ttx-reass__carte" >
+        <span class="ttx-reass__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="#fff" stroke-width="1.8"/></svg></span>
+        <p class="ttx-reass__titre">Paiements sécurisés</p>
+        <div class="ttx-reass__texte"><p>Paiement chiffré, géré par Shopify.</p></div>
+      </div></div>
+</div>
+
+
+
+
+</section>
+<footer class="apercu-pied">[Pied de page du thème de la boutique, non modifié]</footer>
+<script src="../theme/assets/ttx-base.js" defer></script>
+</body></html>

@@ -1,0 +1,20 @@
+{%- comment -%}
+  Carte d'avis. Paramètres : bloc, variante ("court" | "carte" | "liste").
+  Avis fournis par le fabricant : jamais de badge « acheteur vérifié », jamais de logo Trustpilot.
+{%- endcomment -%}
+{%- assign note = bloc.settings.note | default: 5 -%}
+<figure class="ttx-avis ttx-avis--{{ variante | default: 'carte' }}" {{ bloc.shopify_attributes }}>
+  {%- if bloc.settings.photo -%}
+    <div class="ttx-avis__photo">
+      {{ bloc.settings.photo | image_url: width: 600 | image_tag: width: 300, height: 300, loading: 'lazy', sizes: '(min-width: 750px) 300px, 80vw', alt: bloc.settings.nom }}
+    </div>
+  {%- endif -%}
+  <div class="ttx-avis__corps">
+    <div class="ttx-avis__etoiles" role="img" aria-label="Note {{ note }} sur 5">
+      {%- for i in (1..5) -%}<span class="ttx-avis__etoile{% if i > note %} ttx-avis__etoile--vide{% endif %}">★</span>{%- endfor -%}
+    </div>
+    {%- if bloc.settings.titre != blank -%}<p class="ttx-avis__titre">{{ bloc.settings.titre | escape }}</p>{%- endif -%}
+    <blockquote class="ttx-avis__texte">{{ bloc.settings.texte | escape | newline_to_br }}</blockquote>
+    <figcaption class="ttx-avis__nom">{{ bloc.settings.nom | escape }}{% if bloc.settings.pays != blank %} <span class="ttx-avis__pays">· {{ bloc.settings.pays | escape }}</span>{% endif %}</figcaption>
+  </div>
+</figure>

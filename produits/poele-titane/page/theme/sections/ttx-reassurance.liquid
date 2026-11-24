@@ -1,0 +1,50 @@
+{%- comment -%} Titanixxx — 4 cartes de réassurance (icône, titre, texte). {%- endcomment -%}
+{% render 'ttx-head' %}
+<div class="ttx-reass ttx-wrap">
+  <div class="ttx-reass__grille">
+    {%- for block in section.blocks -%}
+      <div class="ttx-reass__carte" {{ block.shopify_attributes }}>
+        <span class="ttx-reass__ico" aria-hidden="true">
+          {%- case block.settings.icone -%}
+            {%- when 'retour' -%}<svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {%- when 'contact' -%}<svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v5H4zM17 14h3v5h-3z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            {%- when 'garantie' -%}<svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="12" r="8.5" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M8 12.5l2.7 2.7L16 9.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {%- when 'paiement' -%}<svg viewBox="0 0 24 24" width="26" height="26"><rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="#fff" stroke-width="1.8"/></svg>
+            {%- else -%}<svg viewBox="0 0 24 24" width="26" height="26"><path d="M3 7l9-4 9 4-9 4-9-4zm0 0v10l9 4 9-4V7" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          {%- endcase -%}
+        </span>
+        <p class="ttx-reass__titre">{{ block.settings.titre | escape }}</p>
+        <div class="ttx-reass__texte">{{ block.settings.texte }}</div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .ttx-reass { padding-block: clamp(24px, 4vw, 48px); }
+  .ttx-reass__grille { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .ttx-reass__carte { text-align: center; padding: 20px 14px; border-radius: 12px; background: #fff; box-shadow: 0 2px 14px rgba(12,51,88,.08); }
+  .ttx-reass__ico { width: 52px; height: 52px; margin: 0 auto 12px; border-radius: 50%; background: var(--ttx-navy); display: grid; place-items: center; }
+  .ttx-reass__titre { margin: 0 0 6px; font: 700 clamp(14px, 1.3vw, 17px)/1.3 var(--ttx-police); }
+  .ttx-reass__texte { font: 400 12px/1.5 var(--ttx-police); color: #3c4450; }
+  .ttx-reass__texte p { margin: 0; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — Réassurance",
+  "tag": "section",
+  "class": "section-ttx-reassurance",
+  "max_blocks": 4,
+  "blocks": [
+    { "type": "carte", "name": "Carte", "settings": [
+      { "type": "select", "id": "icone", "label": "Icône", "default": "colis", "options": [
+        { "value": "colis", "label": "Colis" }, { "value": "retour", "label": "Retour" }, { "value": "contact", "label": "Contact" },
+        { "value": "garantie", "label": "Garantie" }, { "value": "paiement", "label": "Paiement" } ] },
+      { "type": "text", "id": "titre", "label": "Titre", "default": "Titre" },
+      { "type": "richtext", "id": "texte", "label": "Texte", "default": "<p>Texte</p>" }
+    ] }
+  ],
+  "presets": [ { "name": "TTX — Réassurance", "blocks": [ { "type": "carte" }, { "type": "carte" }, { "type": "carte" }, { "type": "carte" } ] } ]
+}
+{% endschema %}

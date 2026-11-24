@@ -1,0 +1,51 @@
+{%- comment -%} Titanixxx — « EN ACTION » : carrousel de vidéos verticales (démo produit). {%- endcomment -%}
+{% render 'ttx-head' %}
+<div class="ttx-videos ttx-wrap" data-ttx-carousel>
+  {%- if section.settings.titre != blank -%}<p class="ttx-surtitre-bleu">{{ section.settings.titre | escape }}</p>{%- endif -%}
+  <div class="ttx-videos__piste" data-ttx-track>
+    {%- for block in section.blocks -%}
+      {%- if block.settings.video != blank -%}
+        <div class="ttx-videos__carte" {{ block.shopify_attributes }}>
+          {{ block.settings.video | video_tag: autoplay: false, loop: true, muted: true, playsinline: true, controls: true, preload: 'none', image_size: '600x' }}
+          {%- if block.settings.legende != blank -%}<p class="ttx-videos__legende">{{ block.settings.legende | escape }}</p>{%- endif -%}
+        </div>
+      {%- elsif section.settings.afficher_emplacements -%}
+        <div class="ttx-videos__carte" {{ block.shopify_attributes }}>{% render 'ttx-emplacement', libelle: block.settings.brief, ratio: '9 / 13' %}</div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <button type="button" class="ttx-fleche ttx-fleche--suiv ttx-videos__suiv" data-ttx-next aria-label="Vidéo suivante">›</button>
+</div>
+
+{% stylesheet %}
+  .ttx-videos { position: relative; padding-block: clamp(24px, 4vw, 48px); }
+  .ttx-videos__piste { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .ttx-videos__piste::-webkit-scrollbar { display: none; }
+  .ttx-videos__carte { flex: 0 0 calc((100% - 10px) / 2); scroll-snap-align: start; position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 9 / 13; background: #f4f5f7; }
+  @media (min-width: 750px) { .ttx-videos__carte { flex-basis: calc((100% - 30px) / 4); } }
+  .ttx-videos__carte video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ttx-videos__carte .ttx-emplacement { height: 100%; aspect-ratio: auto; }
+  .ttx-videos__legende { position: absolute; left: 10px; bottom: 10px; margin: 0; color: #fff; font: 600 12px/1.2 var(--ttx-police); text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .ttx-videos__suiv { top: 55%; right: 4px; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — Vidéos en action",
+  "tag": "section",
+  "class": "section-ttx-videos",
+  "settings": [
+    { "type": "text", "id": "titre", "label": "Sur-titre", "default": "EN ACTION" },
+    { "type": "checkbox", "id": "afficher_emplacements", "label": "Afficher les emplacements vides (brouillon)", "default": true, "info": "À décocher avant publication." }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    { "type": "video", "name": "Vidéo", "settings": [
+      { "type": "video", "id": "video", "label": "Vidéo (fichier Shopify)" },
+      { "type": "text", "id": "legende", "label": "Légende (jamais un faux client)" },
+      { "type": "text", "id": "brief", "label": "Brief si vide (pour la production)" }
+    ] }
+  ],
+  "presets": [ { "name": "TTX — Vidéos en action", "blocks": [ { "type": "video" }, { "type": "video" }, { "type": "video" }, { "type": "video" } ] } ]
+}
+{% endschema %}

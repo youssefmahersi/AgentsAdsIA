@@ -1,0 +1,44 @@
+S2 — angle « regardez le fond de votre poêle » — v1 (omar, 2026-11-22). One image, one prompt, one pass: the model renders the final ad, text included.
+
+SUBJECT / SCENE
+Stacked comparison, two real iPhone photos on the same light grey kitchen worktop, same daylight, same high three-quarter angle (about 60° above the horizontal, as in image 1), both pans centred horizontally.
+- Upper panel (smaller): an old, unbranded black non-stick frying pan, its dark coating covered with fine scratches and a few worn grey patches where the coating has rubbed off. Realistic, clean, not dirty, not burnt, no food, no smoke.
+- Lower panel (bigger): the pan from image 1, clean and empty, its hammered titanium surface catching the daylight.
+No people, no hands.
+
+PRODUCT (image 1 = produits/poele-titane/packshots/gemini/02-packshot-fond-blanc.webp, attached as reference; the pan is NEVER generated from scratch)
+Reproduce exactly the frying pan of image 1: shape, proportions, colours, materials, details. Checklist:
+- round pan, low flared walls, rolled mirror-polished rim, smooth mirror-polished outer body;
+- cooking surface: irregular hammered scale (snakeskin-like) relief covering the whole flat bottom and the lower third of the inner walls; upper inner wall smooth; NO smooth central disc, NO regular hexagonal honeycomb pattern;
+- handle: long solid brushed-steel handle with a Y-shaped base and an elongated open slot where it meets the pan, fixed by exactly 2 round rivet heads visible on the inner wall just below the rim, one above the other; small teardrop hanging hole at the tip; NOT a bolted two-prong bracket, NOT a hollow tube, no plastic, no wood;
+- no logo, no text, no engraving anywhere on the pan.
+Sits on a visible surface with a real contact shadow; reflections match the scene light.
+HERO OF THE FRAME: in the lower panel the pan bowl fills at least 30% of the image height, its centre on the vertical centre line of the image (bowl centre between x = 40% and x = 55%, handle to the right), whole pan and whole handle visible, nothing cropped. It is clearly bigger and sharper than the old pan (old pan bowl about 20% of image height).
+
+LIGHT
+Soft natural daylight from a window on the left, neutral white, identical in both panels.
+
+TEXT / LANGUAGE (render exactly, French spelling, accents included: ê, é, ô)
+LAYOUT, top to bottom:
+- Top band 0-18%: solid white, anchored to the top edge. Headline centred, black #010101, Poppins Bold style, two lines, each line about 6% of image height:
+  line 1: "Regardez le fond"
+  line 2: "de votre poêle."
+- Upper panel 18-44%: old pan photo. Small dark grey #3a3a3a rounded tag at the top-left corner of the panel, above the pan and not touching it, white Poppins Bold text at 3.5% of image height: "Revêtement rayé".
+- Thin white gap (about 1%).
+- Lower panel 45-83%: our pan photo. Navy #0c3358 rounded tag at the top-left corner of the panel, above the pan and not touching it, white Poppins Bold text at 3.5% of image height: "Sans revêtement antiadhésif".
+- Bottom band 83-100%: solid navy #0c3358, anchored to the bottom edge.
+  Left, stacked: white Poppins Bold "Sans PFAS" at 5.5% of image height, below it white Poppins SemiBold "Titane · aluminium · inox" at 3.5% of image height.
+  Right: red #e11b22 rounded button, white Poppins Bold capital text "ACHETER" at 4% of image height.
+Render ONLY these 6 text items, nothing else. Every text line at least 3.5% of image height (38 px on 1080).
+
+STYLE / DA
+COLOUR ACCURACY: flat solid fills with the exact hex values, no gradient, no brightening: #0c3358 is a very dark, deep navy (almost black-blue), #144a79 is a dark muted steel blue, NOT a bright royal blue.
+Real iPhone photo for the photo zone, never studio, never 3D, never glossy advertising look. Flat graphic bands for the text zones, palette #0c3358 / #144a79 / #e11b22 / #1d7a3a / #ffffff / #010101, Poppins Bold style.
+shot on iPhone, natural daylight, light sensor grain, imperfect handheld framing, lived-in real environment, no studio lighting, no CGI, no 3D render, no beauty retouch
+
+FORMAT
+Square 1:1, 1080 x 1080 px, Facebook / Instagram feed static ad, French language (France), euro.
+
+NEGATIVES
+any brand name or logo (no wordmark, no third-party brand) · misspelled, distorted, cut or invented text · gibberish · any text line smaller than 3.5% of image height · text overlapping the pan · pan floating or pasted · pan small or pushed to the background · pan different from image 1 (other handle, bolted bracket, smooth central disc, honeycomb pattern, coloured coating) · invented box or packaging · studio or 3D render look · stars, ratings, reviews, badges, labels, certifications, percentages, crossed-out prices, countdowns · words like "jamais", "100 %", "pur", "santé", "toxine", "garantie" · health, fear or danger imagery (smoke, warning signs, chemical symbols, skull)
+ · brand or logo on the old pan · food residue, burnt marks or flaking particles in or around the old pan · side-by-side layout

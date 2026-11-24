@@ -1,0 +1,35 @@
+{%- comment -%} Titanixxx — bandeau défilant (barre d'annonce de la page source), propre à ce gabarit. {%- endcomment -%}
+{% render 'ttx-head' %}
+<div class="ttx-annonce" role="region" aria-label="Annonces">
+  <div class="ttx-annonce__piste">
+    {%- for i in (1..4) -%}
+      <div class="ttx-annonce__groupe"{% if i > 1 %} aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          <span class="ttx-annonce__msg" {% if i == 1 %}{{ block.shopify_attributes }}{% endif %}>• {{ block.settings.texte | escape }} •</span>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .ttx-annonce { background: #111315; color: #fff; overflow: hidden; }
+  .ttx-annonce__piste { display: flex; width: max-content; animation: ttx-defile 40s linear infinite; }
+  .ttx-annonce__groupe { display: flex; }
+  .ttx-annonce__msg { padding: 8px 28px; font: 700 13px/1.2 var(--ttx-police); letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
+  @keyframes ttx-defile { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ttx-annonce__piste { animation: none; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — Bandeau défilant",
+  "tag": "section",
+  "class": "section-ttx-annonce",
+  "max_blocks": 4,
+  "blocks": [
+    { "type": "message", "name": "Message", "settings": [ { "type": "text", "id": "texte", "label": "Texte (doit être vrai)", "default": "SANS PFAS" } ] }
+  ],
+  "presets": [ { "name": "TTX — Bandeau défilant", "blocks": [ { "type": "message" } ] } ]
+}
+{% endschema %}

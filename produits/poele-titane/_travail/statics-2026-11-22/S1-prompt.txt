@@ -1,0 +1,38 @@
+S1 — angle « ça accroche » — v1 (omar, 2026-11-22). One image, one prompt, one pass: the model renders the final ad, text included.
+
+SUBJECT / SCENE
+Real home kitchen, morning. The pan from image 1 sits on a household GAS burner (not induction, not a glass hob), seen from a high three-quarter angle (about 60° above the horizontal, same angle as image 1). One fried egg cooking in the centre of the pan: glossy runny yolk, set white, lightly golden lacy edges, a thin film of melted butter visible around it. A wooden spatula lies on the worktop next to the hob, not in the pan. No people, no hands. Background (worktop, tiles, a mug) slightly out of focus, any label in the background blurred and unreadable.
+
+PRODUCT (image 1 = produits/poele-titane/packshots/gemini/02-packshot-fond-blanc.webp, attached as reference; the pan is NEVER generated from scratch)
+Reproduce exactly the frying pan of image 1: shape, proportions, colours, materials, details. Checklist:
+- round pan, low flared walls, rolled mirror-polished rim, smooth mirror-polished outer body;
+- cooking surface: irregular hammered scale (snakeskin-like) relief covering the whole flat bottom and the lower third of the inner walls; upper inner wall smooth; NO smooth central disc, NO regular hexagonal honeycomb pattern;
+- handle: long solid brushed-steel handle with a Y-shaped base and an elongated open slot where it meets the pan, fixed by exactly 2 round rivet heads visible on the inner wall just below the rim, one above the other; small teardrop hanging hole at the tip; NOT a bolted two-prong bracket, NOT a hollow tube, no plastic, no wood;
+- no logo, no text, no engraving anywhere on the pan.
+Sits on a visible surface with a real contact shadow; reflections match the scene light.
+HERO OF THE FRAME: the pan bowl alone fills at least 38% of the image height, its centre at the horizontal centre of the image, whole pan and whole handle inside the photo zone (handle pointing to the right), nothing cropped. It is the biggest and sharpest object in the frame.
+
+LIGHT
+Soft natural daylight from a window on the left, late morning, neutral-warm white, gentle highlights on the polished rim, soft real shadows.
+
+TEXT / LANGUAGE (render exactly, French spelling, accents included: œ, ê, é)
+LAYOUT, top to bottom:
+- Top band 0-24% of height: solid navy #0c3358, full width, anchored to the top edge. Headline centred, white, Poppins Bold style, sentence case, two lines, each line about 5.5% of image height, side margins at least 60 px:
+  line 1: "Un œuf au plat."
+  line 2: "Sans revêtement antiadhésif."
+- Photo zone 24-76%: the scene above, no text in it.
+- Bottom band 76-100%: solid white, anchored to the bottom edge, two centred rows:
+  row 1: two rounded pills side by side, fill #144a79, white Poppins SemiBold text at 3.5% of image height: "Surface de cuisson en titane" and "Sans PFAS".
+  row 2: black #010101 Poppins Bold "59,99 €" at 5.5% of image height, then to its right a red #e11b22 rounded button with white Poppins Bold capital text "ACHETER" at 4% of image height.
+Render ONLY these 6 text items, nothing else. Every text line at least 3.5% of image height (38 px on 1080).
+
+STYLE / DA
+Real iPhone photo for the photo zone, never studio, never 3D, never glossy advertising look. Flat graphic bands for the text zones, palette #0c3358 / #144a79 / #e11b22 / #1d7a3a / #ffffff / #010101, Poppins Bold style.
+shot on iPhone, natural daylight, light sensor grain, imperfect handheld framing, lived-in real environment, no studio lighting, no CGI, no 3D render, no beauty retouch
+
+FORMAT
+Square 1:1, 1080 x 1080 px, Facebook / Instagram feed static ad, French language (France), euro.
+
+NEGATIVES
+any brand name or logo (no wordmark, no third-party brand) · misspelled, distorted, cut or invented text · gibberish · any text line smaller than 3.5% of image height · text overlapping the pan · pan floating or pasted · pan small or pushed to the background · pan different from image 1 (other handle, bolted bracket, smooth central disc, honeycomb pattern, coloured coating) · invented box or packaging · studio or 3D render look · stars, ratings, reviews, badges, labels, certifications, percentages, crossed-out prices, countdowns · words like "jamais", "100 %", "pur", "santé", "toxine", "garantie" · health, fear or danger imagery (smoke, warning signs, chemical symbols, skull)
+ · floating spatula or utensil moving by itself · egg sliding or flying · induction hob

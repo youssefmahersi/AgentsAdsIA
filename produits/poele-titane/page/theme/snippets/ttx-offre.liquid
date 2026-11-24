@@ -1,0 +1,50 @@
+{%- comment -%}
+  Une carte d'offre (palier). Paramètres : bloc, product, form_id, coche (true/false).
+  Prix lu sur la variante (jamais écrit à la main). Économie calculée sur le prix de la variante n°1
+  multiplié par « quantite_ref » ; affichée seulement si elle est positive. Aucun prix barré.
+{%- endcomment -%}
+{%- liquid
+  assign position = bloc.settings.variante | default: 1
+  assign index = position | minus: 1
+  assign variante = product.variants[index]
+  assign unite = product.variants[0].price
+  assign qte = bloc.settings.quantite_ref | default: 1
+  assign reference = unite | times: qte
+  if variante
+    assign economie = reference | minus: variante.price
+  else
+    assign economie = 0
+  endif
+  if economie > 0
+    assign pourcentage = economie | times: 100 | divided_by: reference
+  endif
+  assign visuel = bloc.settings.image | default: product.featured_image
+-%}
+{%- if variante -%}
+<label class="ttx-offre" {{ bloc.shopify_attributes }}>
+  <input class="ttx-offre__radio" type="radio" name="id" value="{{ variante.id }}" form="{{ form_id }}"
+    {% if coche %}checked{% endif %}{% unless variante.available %} disabled{% endunless %}>
+  <span class="ttx-offre__coche" aria-hidden="true"></span>
+  {%- if bloc.settings.badge != blank or economie > 0 -%}
+    <span class="ttx-offre__badge">
+      {%- if economie > 0 and bloc.settings.afficher_pourcentage -%}-{{ pourcentage }} %{%- endif -%}
+      {%- if economie > 0 and bloc.settings.afficher_pourcentage and bloc.settings.badge != blank %} • {% endif -%}
+      {{- bloc.settings.badge | escape -}}
+    </span>
+  {%- endif -%}
+  <span class="ttx-offre__img">
+    {%- if visuel -%}
+      {{ visuel | image_url: width: 120 | image_tag: width: 60, height: 60, loading: 'lazy', alt: '' }}
+    {%- endif -%}
+  </span>
+  <span class="ttx-offre__txt">
+    <span class="ttx-offre__titre">{{ bloc.settings.titre | escape }}</span>
+    {%- if economie > 0 -%}
+      <span class="ttx-offre__eco">Économisez {{ economie | money }}</span>
+    {%- elsif bloc.settings.sous_titre != blank -%}
+      <span class="ttx-offre__sous">{{ bloc.settings.sous_titre | escape }}</span>
+    {%- endif -%}
+  </span>
+  <span class="ttx-offre__prix">{{ variante.price | money }}</span>
+</label>
+{%- endif -%}

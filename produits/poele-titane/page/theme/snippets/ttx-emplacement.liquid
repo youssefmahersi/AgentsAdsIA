@@ -1,0 +1,7 @@
+{%- comment -%}
+  Emplacement d'image vide (visuel à produire). Paramètres : libelle, ratio (ex. "1 / 1").
+  N'apparaît que si la section l'autorise (setting « afficher_emplacements »).
+{%- endcomment -%}
+<div class="ttx-emplacement" style="--ttx-ratio: {{ ratio | default: '1 / 1' }}" role="img" aria-label="Visuel à venir">
+  <span class="ttx-emplacement__txt">Visuel à venir{% if libelle != blank %}<br><small>{{ libelle | escape }}</small>{% endif %}</span>
+</div>

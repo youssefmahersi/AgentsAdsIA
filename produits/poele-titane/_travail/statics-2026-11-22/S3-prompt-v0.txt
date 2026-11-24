@@ -1,0 +1,11 @@
+Use image 1 as the exact product: two identical copies of this frying pan (same hammered scale-pattern titanium cooking surface over the whole bottom, no smooth central disc, brushed steel rim, hollow split handle with exactly 2 rivets). Do not redesign or recolor. No logo or text on the pans. No box, no packaging.
+
+FORMAT: square 1:1 Facebook feed static ad, French language, Christmas gift offer.
+
+LAYOUT:
+- Top 0-26%: white background. Centered navy #0c3358 bold geometric sans-serif (Poppins Bold style) headline on two lines: "Une pour vous," / "une à offrir." about 8% of image height per line. Above it, small red #e11b22 bold caps text "NOËL".
+- Middle 26-78%: the two pans from image 1, whole, nothing cropped, slightly overlapping, one in front angled 3/4, the second just behind; on the back pan a simple red satin ribbon bow tied around the handle (no box). Clean white studio background with soft natural shadow, a few blurred pine sprigs at the far left and right edges only.
+- Bottom 78-100%: navy #0c3358 band anchored to the bottom edge. Left: white bold "Le lot de 2" then very large white bold "99,99 €". Centre: green #1d7a3a rounded badge, white bold text "Économisez 19,99 €". Right: red #e11b22 rounded button, white bold "ACHETER".
+- Wordmark "Titanixxx" small bold navy, top-left corner.
+
+TEXT RULES: render only the exact French text above, spelled exactly with accents (Ë, É, à). No other words, no percentages, no crossed-out prices, no stars, no reviews, no countdown.

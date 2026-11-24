@@ -1,0 +1,17 @@
+SUBJECT / SCENE: A real home kitchen on a weekday evening. A worn oak worktop, a used wooden cutting board on the left with a ripe tomato that has been crushed instead of sliced: flattened, juice and seeds spilled on the board. A plain stainless chef's knife with a black handle lies flat on the board next to the tomato, blade turned away from camera, no marking on the blade. Background: a lived-in kitchen, tiled wall, a pan and a bottle of olive oil, all softly out of focus. No person and no hands anywhere in the frame.
+
+PRODUCT: The attached image is the real product photo. Reproduce exactly the wooden roller sharpener and the wooden magnetic angle support from the reference: shape, proportions, beech wood colour and grain, the two black silicone rings and brushed steel discs at each end of the roller, the grey metal plate engraved "15°" on the support. Show ONLY these two pieces, complete and uncut. The two loose discs and the words "diamond1000" and "diamond400" from the reference must not appear anywhere. No box, no packaging. The roller stands upright, CENTERED horizontally, in the foreground at the front edge of the worktop, closest object to the lens; its height is at least 30 % of the image height; the support lies just to its right. It is the largest and sharpest object in the frame, set down on the worktop with a soft contact shadow and wood reflections matching the window light.
+
+LIGHT: Natural late-afternoon window light from the left, warm, about 4000 K, soft shadows falling to the right.
+
+TEXT / LANGUAGE (French, rendered exactly, letter for letter, no other text):
+- Top 25 % of the image, centered, on a flat cream band #F4EDE1: headline in an elegant medium-weight serif (Fraunces style), charcoal #1C1A17, large, sentence case, on two lines: "Votre couteau écrase les tomates ?" then, slightly smaller: "Le problème, c'est l'angle."
+- Bottom 18 % of the image, on a flat cream band #F4EDE1, clean sans-serif (Inter style), charcoal #1C1A17, medium size: "Le support aimanté tient l'angle pour vous."
+- Under it on the same band, left: price "39,99 €" in bold dark wood brown #8A4B25, and next to it the old price "49,99 €" smaller, charcoal, with a clean horizontal strike-through line. Right side of the band, small charcoal sans-serif: "Satisfait ou remboursé 30 jours".
+- Text never covers the product. Any label or packaging in the background stays blurred and unreadable. No English word anywhere.
+
+STYLE / DA: Real iPhone photo of a real kitchen, slight imperfection, light sensor grain, imperfect handheld framing, no retouching, warm artisanal and precise mood; only the two cream text bands are clean graphic layout. shot on iPhone, natural daylight, slight motion blur, light sensor grain, imperfect handheld framing, lived-in real environment, no studio lighting, no CGI, no 3D render, no beauty retouch.
+
+FORMAT: square 1:1.
+
+NEGATIVES: no third-party logo or brand, no misspelled or gibberish text, no English text, no floating or pasted-on product, no small or background product, no product different from the reference, no black roller, no coloured discs, no extra loose discs, no invented box or packaging, no studio or glossy advertising look, no person, no fingers on the blade edge, no blood, no star rating, no customer count, no lifetime guarantee.

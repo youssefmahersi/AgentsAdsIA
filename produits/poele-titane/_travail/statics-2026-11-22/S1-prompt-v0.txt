@@ -1,0 +1,11 @@
+Use image 1 as the exact product: this frying pan must appear identical (same hammered scale-pattern titanium cooking surface over the whole bottom, no smooth central disc, same brushed steel rim, same hollow split handle fixed with exactly 2 rivets, same proportions). Do not redesign, recolor or simplify the pan. No logo, no text and no engraving on the pan.
+
+FORMAT: square 1:1 Facebook feed static ad, French language.
+
+LAYOUT (top to bottom):
+- Top band 0-24% height: solid deep navy #0c3358 band anchored to the top edge. Centered white bold geometric sans-serif (Poppins Bold style) headline on two lines: "Un œuf au plat." / "Sans revêtement antiadhésif." Very large, about 7% of image height per line.
+- Middle 24-84%: realistic overhead 3/4 photo of the pan from image 1 on a home gas or induction hob, one fried egg with a glossy runny yolk and lightly golden edges cooking in the centre, a thin film of butter visible, a wooden spatula just lifting the edge of the egg. The whole pan and the whole handle are inside the frame, nothing cropped. Shot on iPhone, natural window daylight, real home kitchen, slight grain, true colours. No people, no hands.
+- Bottom band 84-100%: white band anchored to the bottom edge. Left: small rounded pills in navy #144a79 with white text "Surface de cuisson en titane" and "Sans PFAS". Right: red #e11b22 rounded button with white bold text "ACHETER" and above it in black #010101 bold "59,99 €".
+- Small wordmark "Titanixxx" in white, bold, top-right corner inside the navy band, about 3% of image height.
+
+TEXT RULES: render only the exact French text above, spelled exactly, with accents (œ, ê). No other words, no badges, no stars, no reviews, no numbers other than "59,99 €".

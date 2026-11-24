@@ -1,0 +1,9 @@
+{%- comment -%}
+  Titanixxx : polices de la charte (Poppins, Sofia Sans), CSS et JS communs aux sections ttx-*.
+  Rendu par chaque section ttx-* : le navigateur ne charge chaque fichier qu'une fois.
+{%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sofia+Sans:wght@800;900&display=swap">
+{{ 'ttx-base.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ttx-base.js' | asset_url }}" defer></script>

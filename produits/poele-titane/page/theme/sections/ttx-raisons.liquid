@@ -1,0 +1,73 @@
+{%- comment -%} Titanixxx — « N RAISONS » : lignes image / texte en alternance + bouton. {%- endcomment -%}
+{% render 'ttx-head' %}
+<div class="ttx-raisons ttx-wrap">
+  {%- if section.settings.etiquette != blank -%}<p class="ttx-etiquette">{{ section.settings.etiquette | escape }}</p>{%- endif -%}
+  <h2 class="ttx-raisons__titre">{{ section.settings.titre }}</h2>
+  {%- if section.settings.intro != blank -%}<p class="ttx-raisons__intro">{{ section.settings.intro | escape }}</p>{%- endif -%}
+  <div class="ttx-raisons__liste">
+    {%- for block in section.blocks -%}
+      <div class="ttx-raisons__ligne{% cycle '', ' ttx-raisons__ligne--inverse' %}" {{ block.shopify_attributes }}>
+        <div class="ttx-raisons__media">
+          {%- if block.settings.image -%}
+            {{ block.settings.image | image_url: width: 1000 | image_tag: width: 500, height: 500, loading: 'lazy', sizes: '(min-width: 750px) 40vw, 100vw', widths: '400, 600, 800, 1000', alt: block.settings.titre }}
+          {%- elsif section.settings.afficher_emplacements -%}
+            {% render 'ttx-emplacement', libelle: block.settings.brief, ratio: '1 / 1' %}
+          {%- endif -%}
+        </div>
+        <div class="ttx-raisons__texte">
+          <p class="ttx-raisons__pastille"><span class="ttx-raisons__num">{{ forloop.index }}</span>{{ block.settings.titre | escape }}</p>
+          <div class="ttx-raisons__corps">{{ block.settings.texte }}</div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+  {%- if section.settings.cta != blank -%}
+    <div class="ttx-centre"><a class="ttx-cta" href="{{ section.settings.cta_lien | default: '#ttx-achat' }}">{{ section.settings.cta | escape }}</a></div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .ttx-raisons { padding-block: clamp(32px, 5vw, 64px); }
+  .ttx-raisons__titre { margin: 10px 0 12px; font: 800 clamp(24px, 2.6vw, 34px)/1.2 var(--ttx-police-titre); max-width: 22ch; }
+  .ttx-raisons__intro { margin: 0 0 24px; font: 700 14px/1.5 var(--ttx-police); color: #2b313a; }
+  .ttx-raisons__liste { display: grid; gap: 32px; margin-bottom: 32px; }
+  .ttx-raisons__ligne { display: grid; gap: 16px; }
+  @media (min-width: 750px) {
+    .ttx-raisons__ligne { grid-template-columns: minmax(0, .75fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: center; }
+    .ttx-raisons__ligne--inverse .ttx-raisons__media { order: 2; }
+    .ttx-raisons__ligne--inverse { grid-template-columns: minmax(0, 1fr) minmax(0, .75fr); }
+  }
+  .ttx-raisons__media { aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 4px 4px 0 #c9d3e3, 0 0 0 1px #eef1f5; }
+  .ttx-raisons__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ttx-raisons__media .ttx-emplacement { height: 100%; }
+  .ttx-raisons__pastille { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 12px; padding: 8px 18px 8px 10px; border: 2px solid var(--ttx-navy); border-radius: 999px; font: 800 14px/1.25 var(--ttx-police-titre); text-transform: uppercase; color: var(--ttx-navy); }
+  .ttx-raisons__num { flex: 0 0 22px; height: 22px; border-radius: 50%; background: var(--ttx-navy); color: #fff; display: grid; place-items: center; font-size: 12px; }
+  .ttx-raisons__corps { font: 500 15px/1.55 var(--ttx-police); color: #2b313a; max-width: 46ch; }
+  .ttx-raisons__corps p { margin: 0; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — Raisons",
+  "tag": "section",
+  "class": "section-ttx-raisons",
+  "settings": [
+    { "type": "text", "id": "etiquette", "label": "Étiquette", "default": "5 RAISONS" },
+    { "type": "inline_richtext", "id": "titre", "label": "Titre", "default": "Pourquoi choisir cette poêle" },
+    { "type": "text", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "cta", "label": "Bouton", "default": "JE COMMANDE MA POÊLE EN TITANE ➜" },
+    { "type": "url", "id": "cta_lien", "label": "Lien du bouton (vide = haut de page)" },
+    { "type": "checkbox", "id": "afficher_emplacements", "label": "Afficher les emplacements vides (brouillon)", "default": true }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    { "type": "raison", "name": "Raison", "settings": [
+      { "type": "text", "id": "titre", "label": "Titre", "default": "RAISON" },
+      { "type": "richtext", "id": "texte", "label": "Texte", "default": "<p>Texte</p>" },
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "brief", "label": "Brief si image vide" }
+    ] }
+  ],
+  "presets": [ { "name": "TTX — Raisons", "blocks": [ { "type": "raison" }, { "type": "raison" } ] } ]
+}
+{% endschema %}

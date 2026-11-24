@@ -1,0 +1,63 @@
+{%- comment -%}
+  Titanixxx — avis clients codés en dur (un bloc par avis). Deux styles : « cartes » (carrousel avec photo)
+  et « bandeau » (cartes texte). Mention de transparence Omnibus obligatoire au-dessus.
+  Aucune note moyenne, aucun nombre d'avis, aucun logo Trustpilot, aucun « acheteur vérifié ».
+{%- endcomment -%}
+{% render 'ttx-head' %}
+<div class="ttx-avis-section ttx-avis-section--{{ section.settings.style }} ttx-wrap" data-ttx-carousel>
+  {%- if section.settings.surtitre != blank -%}<p class="ttx-avis-section__surtitre">{{ section.settings.surtitre | escape }}</p>{%- endif -%}
+  {%- if section.settings.titre != blank -%}<h2 class="ttx-avis-section__titre">{{ section.settings.titre }}</h2>{%- endif -%}
+  {% render 'ttx-avis-source', intitule: section.settings.intitule, collecte: section.settings.collecte %}
+  <div class="ttx-avis-section__piste" data-ttx-track>
+    {%- for block in section.blocks -%}
+      {% render 'ttx-avis-carte', bloc: block, variante: section.settings.style %}
+    {%- endfor -%}
+  </div>
+  <div class="ttx-avis-section__nav">
+    <button type="button" class="ttx-rond" data-ttx-prev aria-label="Avis précédent">‹</button>
+    <button type="button" class="ttx-rond" data-ttx-next aria-label="Avis suivant">›</button>
+  </div>
+</div>
+
+{% stylesheet %}
+  .ttx-avis-section { padding-block: clamp(32px, 5vw, 64px); }
+  .ttx-avis-section__surtitre { margin: 0 0 12px; font: 800 14px/1.2 var(--ttx-police); text-transform: uppercase; letter-spacing: .03em; }
+  .ttx-avis-section__titre { margin: 0 0 8px; text-align: center; font: 500 clamp(26px, 3vw, 40px)/1.15 var(--ttx-police); letter-spacing: -.01em; }
+  .ttx-avis-section__titre strong { font-weight: 800; }
+  .ttx-avis-section--cartes .ttx-avis-source { text-align: center; margin-bottom: 24px; }
+  .ttx-avis-section__piste { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px 2px 12px; }
+  .ttx-avis-section__piste::-webkit-scrollbar { display: none; }
+  .ttx-avis-section__piste > .ttx-avis { flex: 0 0 85%; scroll-snap-align: start; }
+  @media (min-width: 750px) {
+    .ttx-avis-section--cartes .ttx-avis-section__piste > .ttx-avis { flex-basis: calc((100% - 32px) / 3); }
+    .ttx-avis-section--bandeau .ttx-avis-section__piste > .ttx-avis { flex-basis: calc((100% - 32px) / 2.4); }
+  }
+  .ttx-avis-section__nav { display: flex; justify-content: center; gap: 12px; margin-top: 8px; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — Avis (fabricant)",
+  "tag": "section",
+  "class": "section-ttx-avis",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Style", "default": "cartes", "options": [ { "value": "cartes", "label": "Cartes (carrousel)" }, { "value": "bandeau", "label": "Bandeau texte" } ] },
+    { "type": "text", "id": "surtitre", "label": "Sur-titre" },
+    { "type": "inline_richtext", "id": "titre", "label": "Titre" },
+    { "type": "text", "id": "intitule", "label": "Intitulé de transparence (obligatoire)", "default": "Avis clients recueillis par notre fabricant sur ce modèle de poêle" },
+    { "type": "inline_richtext", "id": "collecte", "label": "Comment ces avis sont collectés (obligatoire)", "default": "Comment ces avis sont collectés : [À COMPLÉTER]" }
+  ],
+  "max_blocks": 20,
+  "blocks": [
+    { "type": "avis", "name": "Avis", "settings": [
+      { "type": "text", "id": "nom", "label": "Prénom + initiale", "default": "Prénom N." },
+      { "type": "range", "id": "note", "label": "Note", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "text", "id": "titre", "label": "Titre de l'avis" },
+      { "type": "textarea", "id": "texte", "label": "Avis (mot pour mot)" },
+      { "type": "text", "id": "pays", "label": "Pays" },
+      { "type": "image_picker", "id": "photo", "label": "Photo (fournie par le fabricant)" }
+    ] }
+  ],
+  "presets": [ { "name": "TTX — Avis (fabricant)", "blocks": [ { "type": "avis" }, { "type": "avis" }, { "type": "avis" } ] } ]
+}
+{% endschema %}

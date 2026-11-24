@@ -1,0 +1,88 @@
+{%- comment -%} Titanixxx — rappel de l'offre (paliers + bouton), colonne centrée. {%- endcomment -%}
+{% render 'ttx-head' %}
+{%- liquid
+  assign form_id = 'ttx-form-' | append: section.id
+  assign nb_offres = 0
+  for b in section.blocks
+    if b.type == 'offre'
+      assign nb_offres = nb_offres | plus: 1
+    endif
+  endfor
+  assign defaut = section.settings.offre_par_defaut | default: 1
+  assign rang_offre = 0
+-%}
+<div class="ttx-rappel ttx-wrap">
+  <div class="ttx-rappel__col">
+    {%- if section.settings.image -%}
+      <div class="ttx-rappel__image">
+        {{ section.settings.image | image_url: width: 1000 | image_tag: width: 500, height: 500, loading: 'lazy', sizes: '(min-width: 750px) 460px, 100vw', alt: product.title }}
+      </div>
+    {%- endif -%}
+    <form id="{{ form_id }}" method="post" action="{{ routes.cart_add_url }}" accept-charset="UTF-8">
+      <input type="hidden" name="form_type" value="product">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="quantity" value="1">
+      {%- if nb_offres == 0 -%}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">{%- endif -%}
+    </form>
+    {%- if section.settings.titre_offres != blank -%}<p class="ttx-ligne-titre"><span>{{ section.settings.titre_offres | escape }}</span></p>{%- endif -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'offre' -%}
+        {%- assign rang_offre = rang_offre | plus: 1 -%}
+        {%- if rang_offre == defaut -%}{%- assign coche = true -%}{%- else -%}{%- assign coche = false -%}{%- endif -%}
+        {% render 'ttx-offre', bloc: block, product: product, form_id: form_id, coche: coche %}
+      {%- elsif block.type == '@app' -%}
+        {% render block %}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if section.settings.badge_1 != blank or section.settings.badge_2 != blank -%}
+      <div class="ttx-badges">
+        {%- if section.settings.badge_1 != blank -%}<span class="ttx-badge ttx-badge--vert">{{ section.settings.badge_1 | escape }}</span>{%- endif -%}
+        {%- if section.settings.badge_2 != blank -%}<span class="ttx-badge ttx-badge--bleu">{{ section.settings.badge_2 | escape }}</span>{%- endif -%}
+      </div>
+    {%- endif -%}
+    <button type="submit" form="{{ form_id }}" name="add" class="ttx-cta ttx-cta--large" {% unless product.available %}disabled{% endunless %}>
+      {%- if product.available -%}{{ section.settings.cta | escape }}{%- else -%}Épuisé{%- endif -%}
+    </button>
+    <ul class="ttx-paiements" aria-label="Moyens de paiement">
+      {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag: class: 'ttx-paiements__ico' }}</li>{%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% stylesheet %}
+  .ttx-rappel { padding-block: clamp(24px, 4vw, 48px); }
+  .ttx-rappel__col { max-width: 460px; margin-inline: auto; display: flex; flex-direction: column; gap: 14px; }
+  .ttx-rappel__image { aspect-ratio: 1 / 1; border-radius: 10px; overflow: hidden; background: #f4f5f7; }
+  .ttx-rappel__image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — Rappel de l'offre",
+  "tag": "section",
+  "class": "section-ttx-rappel",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image au-dessus (facultative)" },
+    { "type": "text", "id": "titre_offres", "label": "Titre des offres", "default": "CHOISISSEZ VOTRE OFFRE" },
+    { "type": "range", "id": "offre_par_defaut", "label": "Offre cochée par défaut (rang)", "min": 1, "max": 4, "step": 1, "default": 1 },
+    { "type": "text", "id": "badge_1", "label": "Badge vert", "default": "30 jours pour changer d'avis" },
+    { "type": "text", "id": "badge_2", "label": "Badge bleu" },
+    { "type": "text", "id": "cta", "label": "Bouton", "default": "➜ AJOUTER AU PANIER" }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    { "type": "@app" },
+    { "type": "offre", "name": "Offre (palier)", "settings": [
+      { "type": "text", "id": "titre", "label": "Nom de l'offre", "default": "1x Poêle" },
+      { "type": "number", "id": "variante", "label": "Variante du produit (rang 1, 2, 3…)", "default": 1 },
+      { "type": "number", "id": "quantite_ref", "label": "Équivaut à combien de poêles seules", "default": 1 },
+      { "type": "checkbox", "id": "afficher_pourcentage", "label": "Afficher le pourcentage d'économie dans le badge", "default": true },
+      { "type": "text", "id": "badge", "label": "Badge (texte libre, doit être vrai)" },
+      { "type": "text", "id": "sous_titre", "label": "Sous-titre si aucune économie" },
+      { "type": "image_picker", "id": "image", "label": "Vignette (vide = image du produit)" }
+    ] }
+  ],
+  "presets": [ { "name": "TTX — Rappel de l'offre", "blocks": [ { "type": "offre" } ] } ]
+}
+{% endschema %}

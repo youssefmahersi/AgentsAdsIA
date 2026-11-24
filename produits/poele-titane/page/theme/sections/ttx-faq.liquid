@@ -1,0 +1,43 @@
+{%- comment -%} Titanixxx — FAQ en accordéon. {%- endcomment -%}
+{% render 'ttx-head' %}
+<div class="ttx-faq ttx-wrap">
+  <h2 class="ttx-faq__titre">{{ section.settings.titre | escape }}</h2>
+  <div class="ttx-faq__liste">
+    {%- for block in section.blocks -%}
+      <details class="ttx-faq__item" {{ block.shopify_attributes }}>
+        <summary class="ttx-faq__q">{{ block.settings.question | escape }}<span class="ttx-faq__chevron" aria-hidden="true"></span></summary>
+        <div class="ttx-faq__r">{{ block.settings.reponse }}</div>
+      </details>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .ttx-faq { padding-block: clamp(32px, 5vw, 56px); }
+  .ttx-faq__titre { margin: 0 0 24px; text-align: center; font: 800 clamp(26px, 3vw, 36px)/1.2 var(--ttx-police); }
+  .ttx-faq__liste { max-width: 700px; margin-inline: auto; }
+  .ttx-faq__item { border-bottom: 1px solid #e6e8ec; }
+  .ttx-faq__q { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; font: 700 14px/1.35 var(--ttx-police); }
+  .ttx-faq__q::-webkit-details-marker { display: none; }
+  .ttx-faq__chevron { flex: 0 0 8px; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-3px); transition: transform .2s; }
+  .ttx-faq__item[open] .ttx-faq__chevron { transform: rotate(-135deg); }
+  .ttx-faq__r { padding-bottom: 16px; font: 400 14px/1.6 var(--ttx-police); color: #2b313a; }
+  .ttx-faq__r p { margin: 0 0 8px; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — FAQ",
+  "tag": "section",
+  "class": "section-ttx-faq",
+  "settings": [ { "type": "text", "id": "titre", "label": "Titre", "default": "FAQ" } ],
+  "max_blocks": 20,
+  "blocks": [
+    { "type": "question", "name": "Question", "settings": [
+      { "type": "text", "id": "question", "label": "Question", "default": "Question ?" },
+      { "type": "richtext", "id": "reponse", "label": "Réponse", "default": "<p>Réponse</p>" }
+    ] }
+  ],
+  "presets": [ { "name": "TTX — FAQ", "blocks": [ { "type": "question" }, { "type": "question" } ] } ]
+}
+{% endschema %}

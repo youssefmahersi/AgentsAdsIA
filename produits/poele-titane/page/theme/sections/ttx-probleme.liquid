@@ -1,0 +1,70 @@
+{%- comment -%} Titanixxx — « LE PROBLÈME » : fond bleu nuit, 3 cartes numérotées. {%- endcomment -%}
+{% render 'ttx-head' %}
+<div class="ttx-probleme">
+  <div class="ttx-wrap">
+    {%- if section.settings.etiquette != blank -%}<p class="ttx-probleme__etiquette">{{ section.settings.etiquette | escape }}</p>{%- endif -%}
+    <h2 class="ttx-probleme__titre">{{ section.settings.titre }}</h2>
+    {%- if section.settings.intro != blank -%}<p class="ttx-probleme__intro">{{ section.settings.intro | escape }}</p>{%- endif -%}
+    <div class="ttx-probleme__grille">
+      {%- for block in section.blocks -%}
+        <div class="ttx-probleme__carte" {{ block.shopify_attributes }}>
+          {%- if block.settings.image or section.settings.afficher_emplacements -%}
+            <div class="ttx-probleme__media">
+              <span class="ttx-probleme__num">{{ forloop.index }}</span>
+              {%- if block.settings.image -%}
+                {{ block.settings.image | image_url: width: 800 | image_tag: width: 400, height: 300, loading: 'lazy', sizes: '(min-width: 750px) 33vw, 100vw', alt: block.settings.titre }}
+              {%- else -%}
+                {% render 'ttx-emplacement', libelle: block.settings.brief, ratio: '4 / 3' %}
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            <span class="ttx-probleme__num ttx-probleme__num--seul">{{ forloop.index }}</span>
+          {%- endif -%}
+          <p class="ttx-probleme__ctitre">{{ block.settings.titre | escape }}</p>
+          <div class="ttx-probleme__ctexte">{{ block.settings.texte }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .ttx-probleme { background: var(--ttx-navy); color: #fff; padding-block: clamp(40px, 6vw, 72px); }
+  .ttx-probleme__etiquette { margin: 0 0 10px; text-align: center; font: 700 11px/1.2 var(--ttx-police); letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+  .ttx-probleme__titre { margin: 0 auto 12px; max-width: 24ch; text-align: center; font: 800 clamp(24px, 3vw, 36px)/1.2 var(--ttx-police-titre); text-transform: uppercase; }
+  .ttx-probleme__intro { margin: 0 auto 32px; max-width: 52ch; text-align: center; font: 500 14px/1.55 var(--ttx-police); opacity: .85; }
+  .ttx-probleme__grille { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .ttx-probleme__carte { background: rgba(255,255,255,.06); border-radius: 12px; padding: 12px 12px 20px; }
+  .ttx-probleme__media { position: relative; aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden; margin-bottom: 14px; }
+  .ttx-probleme__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ttx-probleme__num { position: absolute; left: 8px; top: 8px; z-index: 1; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: var(--ttx-navy); display: grid; place-items: center; font: 800 13px/1 var(--ttx-police); }
+  .ttx-probleme__media .ttx-emplacement { height: 100%; }
+  .ttx-probleme__num--seul { position: static; margin-bottom: 12px; }
+  .ttx-probleme__ctitre { margin: 0 0 8px; font: 700 16px/1.3 var(--ttx-police); }
+  .ttx-probleme__ctexte { font: 400 13px/1.6 var(--ttx-police); opacity: .9; }
+  .ttx-probleme__ctexte p { margin: 0; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TTX — Le problème",
+  "tag": "section",
+  "class": "section-ttx-probleme",
+  "settings": [
+    { "type": "text", "id": "etiquette", "label": "Étiquette", "default": "LE PROBLÈME" },
+    { "type": "inline_richtext", "id": "titre", "label": "Titre", "default": "Titre" },
+    { "type": "text", "id": "intro", "label": "Intro" },
+    { "type": "checkbox", "id": "afficher_emplacements", "label": "Afficher les emplacements vides (brouillon)", "default": true, "info": "À décocher avant publication." }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    { "type": "carte", "name": "Carte", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "brief", "label": "Brief si image vide" },
+      { "type": "text", "id": "titre", "label": "Titre", "default": "Titre" },
+      { "type": "richtext", "id": "texte", "label": "Texte", "default": "<p>Texte</p>" }
+    ] }
+  ],
+  "presets": [ { "name": "TTX — Le problème", "blocks": [ { "type": "carte" }, { "type": "carte" }, { "type": "carte" } ] } ]
+}
+{% endschema %}

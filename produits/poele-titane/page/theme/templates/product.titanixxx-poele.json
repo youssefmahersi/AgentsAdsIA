@@ -1,0 +1,572 @@
+{
+  "sections": {
+    "annonce": {
+      "type": "ttx-annonce",
+      "settings": {},
+      "blocks": {
+        "message-1": {
+          "type": "message",
+          "settings": {
+            "texte": "SANS PFAS — SANS REVÊTEMENT ANTIADHÉSIF"
+          }
+        },
+        "message-2": {
+          "type": "message",
+          "settings": {
+            "texte": "LOT DE 2 : ÉCONOMISEZ 20,00 €"
+          }
+        }
+      },
+      "block_order": [
+        "message-1",
+        "message-2"
+      ]
+    },
+    "produit": {
+      "type": "ttx-produit",
+      "settings": {
+        "offre_par_defaut": 1,
+        "afficher_emplacements": true,
+        "emplacements_galerie": "Image 1 : packshot + 1 à 4 badges vrais (Sans PFAS, Sans revêtement, Titane · Alu · Inox, 30 jours)\nComparatif : poêle à revêtement rayée / surface titane (sans bouton ni prix)\nManche : fixation réelle (fixe ou amovible, à vérifier)\nCoupe 3 couches : titane / aluminium / inox\nŒuf au plat dans la vraie poêle (sans bouton ni prix)\nLot de 2 poêles (sans prix)",
+        "avis_intitule": "Avis clients recueillis par notre fabricant sur ce modèle de poêle",
+        "avis_collecte": "Comment ces avis sont collectés : [À COMPLÉTER par l'utilisateur]"
+      },
+      "blocks": {
+        "sur_titre-1": {
+          "type": "sur_titre",
+          "settings": {
+            "texte": "SANS PFAS · SANS REVÊTEMENT"
+          }
+        },
+        "titre-2": {
+          "type": "titre",
+          "settings": {
+            "texte": "Poêle Surface Titane Pour Une Cuisine Sans PFAS"
+          }
+        },
+        "sous_titre-3": {
+          "type": "sous_titre",
+          "settings": {
+            "texte": "La surface en titane pour cuisiner sans revêtement antiadhésif au quotidien, pour toute votre famille."
+          }
+        },
+        "puce-4": {
+          "type": "puce",
+          "settings": {
+            "texte": "Relief martelé <strong>sans revêtement antiadhésif</strong>"
+          }
+        },
+        "puce-5": {
+          "type": "puce",
+          "settings": {
+            "texte": "Surface de cuisson <strong>sans PFAS</strong>"
+          }
+        },
+        "puce-6": {
+          "type": "puce",
+          "settings": {
+            "texte": "Fabriquée en <strong>titane, aluminium et inox</strong>"
+          }
+        },
+        "puce-7": {
+          "type": "puce",
+          "settings": {
+            "texte": "Garantie <strong>3 mois</strong> + garantie légale de 2 ans"
+          }
+        },
+        "encart-8": {
+          "type": "encart",
+          "settings": {
+            "titre": "30 JOURS POUR CHANGER D'AVIS",
+            "sous_titre": "REMBOURSÉ",
+            "texte": "Conditions dans notre <a href=\"/policies/refund-policy\">politique de retour</a>."
+          }
+        },
+        "badges-12": {
+          "type": "badges",
+          "settings": {
+            "badge_1": "30 jours pour changer d'avis",
+            "badge_2": "Sans PFAS"
+          }
+        },
+        "bouton-13": {
+          "type": "bouton",
+          "settings": {
+            "texte": "➜ AJOUTER AU PANIER"
+          }
+        },
+        "paiements-14": {
+          "type": "paiements",
+          "settings": {}
+        },
+        "avis_court-15": {
+          "type": "avis_court",
+          "settings": {
+            "nom": "Catherine M.",
+            "note": 5,
+            "titre": "",
+            "texte": "Premier poulet dans ma nouvelle poêle. J'avoue que j'avais un peu peur que ça accroche sans revêtement mais pas du tout. Même le nettoyage n'a pris que deux minutes. Ravie de mon achat."
+          }
+        },
+        "accordeon-16": {
+          "type": "accordeon",
+          "settings": {
+            "titre": "RELIEF MARTELÉ SANS REVÊTEMENT",
+            "contenu": "<p>La surface de cuisson Titanixxx est en titane martelé, sans le moindre revêtement antiadhésif. Son relief en écailles est travaillé directement dans le métal.</p><p>✓ <strong>Aucun revêtement antiadhésif</strong> — rien n'est posé sur le titane</p><p>✓ <strong>Relief martelé</strong> — sur toute la surface de cuisson</p><p>✓ <strong>Sans PFAS</strong> — confirmé par un rapport de laboratoire</p>"
+          }
+        },
+        "accordeon-17": {
+          "type": "accordeon",
+          "settings": {
+            "titre": "SANS PFAS NI REVÊTEMENT",
+            "contenu": "<p>La plupart des poêles du commerce ont un revêtement antiadhésif. La poêle Titanixxx n'en a aucun : vous cuisinez directement sur le titane.</p><p>✓ <strong>Sans PFAS</strong> — confirmé par un rapport de laboratoire</p><p>✓ <strong>Sans revêtement antiadhésif</strong> — une surface en titane nu</p><p>✓ <strong>3 couches</strong> — titane, aluminium, inox</p>"
+          }
+        },
+        "accordeon-18": {
+          "type": "accordeon",
+          "settings": {
+            "titre": "TITANE, ALUMINIUM ET INOX",
+            "contenu": "<p>Une poêle en trois couches, chacune à sa place.</p><p>✓ <strong>Surface de cuisson en titane</strong> — martelée, sans revêtement</p><p>✓ <strong>Noyau en aluminium</strong> — au cœur de la poêle</p><p>✓ <strong>Base en inox</strong> — sous la poêle</p>"
+          }
+        },
+        "accordeon-19": {
+          "type": "accordeon",
+          "settings": {
+            "titre": "GARANTIE & LIVRAISON",
+            "contenu": "<p>✓ <strong>Garantie commerciale de 3 mois</strong> — en plus de la garantie légale de conformité de 2 ans</p><p>✓ <strong>30 jours pour changer d'avis</strong> — remboursé, conditions dans notre <a href=\"/policies/refund-policy\">politique de retour</a></p><p>✓ <strong>Suivi de commande</strong> — numéro de suivi envoyé par e-mail dès l'expédition</p><p>✓ <strong>Une question ?</strong> — écrivez-nous via notre formulaire de contact</p>"
+          }
+        },
+        "rapid_bundle_rapi_bundle_mdBaGQ": {
+          "type": "shopify://apps/rapid-bundle/blocks/rapi-bundle/99617c17-a32b-4e70-a883-7a155610d032",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "sur_titre-1",
+        "titre-2",
+        "sous_titre-3",
+        "puce-4",
+        "puce-5",
+        "puce-6",
+        "puce-7",
+        "encart-8",
+        "rapid_bundle_rapi_bundle_mdBaGQ",
+        "badges-12",
+        "bouton-13",
+        "paiements-14",
+        "avis_court-15",
+        "accordeon-16",
+        "accordeon-17",
+        "accordeon-18",
+        "accordeon-19"
+      ]
+    },
+    "videos": {
+      "type": "ttx-videos",
+      "settings": {
+        "titre": "TITANIXXX EN ACTION",
+        "afficher_emplacements": true
+      },
+      "blocks": {
+        "video-1": {
+          "type": "video",
+          "settings": {
+            "legende": "",
+            "brief": "Vidéo verticale : œuf au plat dans la vraie poêle"
+          }
+        },
+        "video-2": {
+          "type": "video",
+          "settings": {
+            "legende": "",
+            "brief": "Vidéo verticale : steak saisi dans la vraie poêle"
+          }
+        },
+        "video-3": {
+          "type": "video",
+          "settings": {
+            "legende": "",
+            "brief": "Vidéo verticale : nettoyage à l'éponge"
+          }
+        },
+        "video-4": {
+          "type": "video",
+          "settings": {
+            "legende": "",
+            "brief": "Vidéo verticale : gros plan relief martelé"
+          }
+        }
+      },
+      "block_order": [
+        "video-1",
+        "video-2",
+        "video-3",
+        "video-4"
+      ]
+    },
+    "avis_cartes": {
+      "type": "ttx-avis",
+      "settings": {
+        "style": "cartes",
+        "surtitre": "",
+        "titre": "Ils ont retrouvé le plaisir <strong>de cuisiner sans revêtement</strong>",
+        "intitule": "Avis clients recueillis par notre fabricant sur ce modèle de poêle",
+        "collecte": "Comment ces avis sont collectés : [À COMPLÉTER par l'utilisateur]"
+      },
+      "blocks": {
+        "avis-1": {
+          "type": "avis",
+          "settings": {
+            "nom": "Véronique S.",
+            "note": 5,
+            "titre": "",
+            "texte": "J'ai filmé ma première recette avec cette poêle. J'en pouvais plus de cuisiner avec un truc qui s'écaillait. Maintenant je peux cuisiner sereine et rien n'accroche. Je la recommande à 100% !!"
+          }
+        },
+        "avis-2": {
+          "type": "avis",
+          "settings": {
+            "nom": "Didier B.",
+            "note": 5,
+            "titre": "",
+            "texte": "Rien n'accroche ! Je ne pensais pas que c'était possible sans revêtement et pourtant même les œufs se décollent sans le moindre effort. Agréablement surpris."
+          }
+        },
+        "avis-3": {
+          "type": "avis",
+          "settings": {
+            "nom": "Gérard P.",
+            "note": 5,
+            "titre": "",
+            "texte": "C'est moi qui cuisine à la maison depuis que je suis à la retraite et franchement j'aurais dû l'avoir bien avant. Elle chauffe vite et rien n'accroche. On n'utilise plus aucune autre poêle chez nous."
+          }
+        },
+        "avis-4": {
+          "type": "avis",
+          "settings": {
+            "nom": "Jean-Marc D.",
+            "note": 5,
+            "titre": "",
+            "texte": "Je cuisine depuis plus de trente ans et j'ai toujours travaillé avec de l'inox. Quand j'ai vu qu'elle saisissait mieux que mes vieilles poêles de métier j'étais sidéré. Le titane, c'est du sérieux."
+          }
+        },
+        "avis-5": {
+          "type": "avis",
+          "settings": {
+            "nom": "Éléna R.",
+            "note": 5,
+            "titre": "",
+            "texte": "Ma spécialité c'est les boulettes de viande. Avec mes anciennes poêles ça collait et je devais toujours gratter le fond. Sur cette poêle ça glisse tout seul et la cuisson est toujours parfaite."
+          }
+        }
+      },
+      "block_order": [
+        "avis-1",
+        "avis-2",
+        "avis-3",
+        "avis-4",
+        "avis-5"
+      ]
+    },
+    "raisons": {
+      "type": "ttx-raisons",
+      "settings": {
+        "etiquette": "5 RAISONS",
+        "titre": "Pourquoi choisir Titanixxx pour votre prochaine poêle",
+        "intro": "La poêle à surface titane, sans revêtement et sans PFAS.",
+        "cta": "JE COMMANDE MA POÊLE EN TITANE ➜",
+        "cta_lien": "",
+        "afficher_emplacements": true
+      },
+      "blocks": {
+        "raison-1": {
+          "type": "raison",
+          "settings": {
+            "titre": "UNE SURFACE EN TITANE MARTELÉ",
+            "texte": "<p>La surface de cuisson est en <strong>titane</strong>, avec un <strong>relief martelé</strong> en écailles travaillé dans le métal. Aucun revêtement antiadhésif n'est posé dessus.</p>",
+            "image": "shopify://shop_images/04-detail-texture.webp",
+            "brief": "Macro du relief martelé"
+          }
+        },
+        "raison-2": {
+          "type": "raison",
+          "settings": {
+            "titre": "CUISINEZ SANS PFAS NI REVÊTEMENT",
+            "texte": "<p>Aucun <strong>revêtement antiadhésif</strong> sur la surface de cuisson : vous cuisinez directement sur le <strong>titane</strong>. L'absence de PFAS est <strong>confirmée par un rapport de laboratoire</strong>.</p>",
+            "brief": "Vraie poêle sur le feu, cuisson en cours, fond clair"
+          }
+        },
+        "raison-3": {
+          "type": "raison",
+          "settings": {
+            "titre": "TITANE, ALUMINIUM ET INOX",
+            "texte": "<p>Trois couches : une <strong>surface de cuisson en titane</strong>, un <strong>noyau en aluminium</strong> et une <strong>base en inox</strong>.</p>",
+            "brief": "Coupe 3 couches titane / aluminium / inox (infographie, contain)"
+          }
+        },
+        "raison-4": {
+          "type": "raison",
+          "settings": {
+            "titre": "30 JOURS POUR L'ESSAYER CHEZ VOUS",
+            "texte": "<p>Vous la testez dans votre cuisine. Si elle ne vous convient pas, vous avez <strong>30 jours pour changer d'avis</strong> et être <strong>remboursé</strong>. Conditions dans notre <a href=\"/policies/refund-policy\">politique de retour</a>.</p>",
+            "brief": "Vraie poêle dans une cuisine de particulier, lumière naturelle"
+          }
+        },
+        "raison-5": {
+          "type": "raison",
+          "settings": {
+            "titre": "GARANTIE 3 MOIS + GARANTIE LÉGALE 2 ANS",
+            "texte": "<p>Votre poêle est couverte par notre <strong>garantie commerciale de 3 mois</strong>, en plus de la <strong>garantie légale de conformité de 2 ans</strong> qui s'applique à tout achat en Europe.</p>",
+            "brief": "Vraie poêle et son colis réel (boîte réelle ou sans boîte)"
+          }
+        }
+      },
+      "block_order": [
+        "raison-1",
+        "raison-2",
+        "raison-3",
+        "raison-4",
+        "raison-5"
+      ]
+    },
+    "probleme": {
+      "type": "ttx-probleme",
+      "settings": {
+        "etiquette": "LE PROBLÈME",
+        "afficher_emplacements": true,
+        "titre": "Les poêles à revêtement finissent par s'user",
+        "intro": "Derrière les belles promesses, le revêtement antiadhésif se raye, s'use, et la poêle se rachète."
+      },
+      "blocks": {
+        "carte-1": {
+          "type": "carte",
+          "settings": {
+            "brief": "Aliments collés dans une poêle à revêtement usée (sans marque)",
+            "titre": "Tout finit par coller",
+            "texte": "<p>Le revêtement s'use à chaque cuisson. Les aliments accrochent, il faut toujours plus de gras, <strong>et le plat est quand même raté.</strong></p>"
+          }
+        },
+        "carte-2": {
+          "type": "carte",
+          "settings": {
+            "brief": "Gros plan d'un revêtement antiadhésif rayé (sans marque)",
+            "titre": "Un revêtement qui se raye",
+            "texte": "<p>À force de spatules et de coups d'éponge, le revêtement antiadhésif se raye. <strong>C'est pour ça que beaucoup cherchent une poêle sans revêtement.</strong></p>"
+          }
+        },
+        "carte-3": {
+          "type": "carte",
+          "settings": {
+            "brief": "Vieilles poêles usées empilées (sans marque)",
+            "titre": "À racheter régulièrement",
+            "texte": "<p>Le revêtement s'use, la poêle part à la poubelle. <strong>Pas chères à l'achat, elles se rachètent encore et encore.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "carte-1",
+        "carte-2",
+        "carte-3"
+      ]
+    },
+    "avis_bandeau": {
+      "type": "ttx-avis",
+      "settings": {
+        "style": "bandeau",
+        "surtitre": "AVIS CLIENTS",
+        "titre": "",
+        "intitule": "Avis clients recueillis par notre fabricant sur ce modèle de poêle",
+        "collecte": "Comment ces avis sont collectés : [À COMPLÉTER par l'utilisateur]"
+      },
+      "blocks": {
+        "avis-1": {
+          "type": "avis",
+          "settings": {
+            "nom": "Nathalie P.",
+            "note": 5,
+            "titre": "Je cuisine plus sereinement",
+            "texte": "Je ne suis pas du genre à me prendre la tête, mais là ça m'a marqué. Avant, je cuisinais sans vraiment réfléchir à la surface… maintenant je fais attention. C'est devenu automatique, et honnêtement ça change tout dans ma façon de voir la cuisine. Mille merci!!"
+          }
+        },
+        "avis-2": {
+          "type": "avis",
+          "settings": {
+            "nom": "Sabrina T.",
+            "note": 5,
+            "titre": "Moins de prise de tête",
+            "texte": "Je cuisine vite fait en rentrant du taf, et ça me saoulait que ça colle ou que ça brûle. Là c'est propre, rapide, efficace. J'ai gagné du temps et moins de prise de tête."
+          }
+        },
+        "avis-3": {
+          "type": "avis",
+          "settings": {
+            "nom": "Camille F.",
+            "note": 5,
+            "titre": "Simple, rapide, sans stress.",
+            "texte": "Honnêtement, ça m'a réconcilié avec la cuisine. C'est facile à utiliser, ça ne colle presque pas, et je n'ai pas besoin de réfléchir à chaque geste."
+          }
+        },
+        "avis-4": {
+          "type": "avis",
+          "settings": {
+            "nom": "Elodie J.",
+            "note": 5,
+            "titre": "On sent la différence",
+            "texte": "J'ai testé pas mal de poêles, et celle-ci est vraiment différente. La cuisson est plus régulière, plus propre, et surtout je sens mieux la maîtrise. Rien à voir avec les poêles revêtues."
+          }
+        }
+      },
+      "block_order": [
+        "avis-1",
+        "avis-2",
+        "avis-3",
+        "avis-4"
+      ]
+    },
+    "rappel": {
+      "type": "ttx-rappel-offre",
+      "settings": {
+        "titre_offres": "",
+        "offre_par_defaut": 1,
+        "badge_1": "30 jours pour changer d'avis",
+        "badge_2": "Sans PFAS",
+        "cta": "➜ AJOUTER AU PANIER"
+      },
+      "blocks": {
+        "rapid_bundle_rappel": {
+          "type": "shopify://apps/rapid-bundle/blocks/rapi-bundle/99617c17-a32b-4e70-a883-7a155610d032",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "rapid_bundle_rappel"
+      ]
+    },
+    "faq": {
+      "type": "ttx-faq",
+      "settings": {
+        "titre": "FAQ – TITANIXXX"
+      },
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "question": "Pourquoi le titane et pas une poêle antiadhésive classique ?",
+            "reponse": "<p>Parce qu'elle n'a <strong>aucun revêtement antiadhésif</strong>. Vous cuisinez directement sur une surface en titane martelé, posée sur un noyau en aluminium et une base en inox. Et elle est <strong>sans PFAS</strong> : c'est confirmé par un rapport de laboratoire.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "question": "De quoi est faite la poêle ?",
+            "reponse": "<p>De trois couches : une <strong>surface de cuisson en titane</strong> martelé, un <strong>noyau en aluminium</strong> et une <strong>base en inox</strong>. Sans revêtement antiadhésif.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle est la garantie ?",
+            "reponse": "<p>Une <strong>garantie commerciale de 3 mois</strong>, en plus de la <strong>garantie légale de conformité de 2 ans</strong>. Si un défaut apparaît, écrivez-nous via notre formulaire de contact.</p>"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "question": "Elle contient vraiment zéro PFAS ?",
+            "reponse": "<p>Zéro PFAS : c'est <strong>confirmé par un rapport de laboratoire</strong>. Aucun revêtement antiadhésif sur la surface de cuisson.</p>"
+          }
+        },
+        "question-5": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je me faire rembourser ?",
+            "reponse": "<p>Oui. Vous avez <strong>30 jours pour changer d'avis</strong> et être remboursé. Les conditions sont détaillées dans notre <a href=\"/policies/refund-policy\">politique de retour</a>.</p>"
+          }
+        },
+        "question-6": {
+          "type": "question",
+          "settings": {
+            "question": "Quels sont les délais de livraison ?",
+            "reponse": "<p>Les délais varient selon la période et le stock, mais la commande est traitée rapidement après validation. Une fois expédiée, vous recevez une confirmation avec les informations de suivi.</p>"
+          }
+        },
+        "question-7": {
+          "type": "question",
+          "settings": {
+            "question": "Comment suivre ma commande ?",
+            "reponse": "<p>Dès l'expédition, vous recevez un e-mail avec votre <strong>numéro de suivi</strong>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-5",
+        "question-6",
+        "question-7"
+      ]
+    },
+    "reassurance": {
+      "type": "ttx-reassurance",
+      "settings": {},
+      "blocks": {
+        "carte-1": {
+          "type": "carte",
+          "settings": {
+            "icone": "colis",
+            "titre": "Livraison offerte",
+            "texte": "<p>Offerte sur votre commande.</p>"
+          }
+        },
+        "carte-2": {
+          "type": "carte",
+          "settings": {
+            "icone": "contact",
+            "titre": "Service client",
+            "texte": "<p>Pour toute demande, écrivez-nous via notre <a href=\"/pages/contact\">formulaire de contact</a>.</p>"
+          }
+        },
+        "carte-3": {
+          "type": "carte",
+          "settings": {
+            "icone": "garantie",
+            "titre": "Garantie 3 mois",
+            "texte": "<p>En plus de la garantie légale de 2 ans.</p>"
+          }
+        },
+        "carte-4": {
+          "type": "carte",
+          "settings": {
+            "icone": "paiement",
+            "titre": "Paiements sécurisés",
+            "texte": "<p>Paiement chiffré, géré par Shopify.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "carte-1",
+        "carte-2",
+        "carte-3",
+        "carte-4"
+      ]
+    }
+  },
+  "order": [
+    "annonce",
+    "produit",
+    "videos",
+    "avis_cartes",
+    "raisons",
+    "probleme",
+    "avis_bandeau",
+    "rappel",
+    "faq",
+    "reassurance"
+  ]
+}
